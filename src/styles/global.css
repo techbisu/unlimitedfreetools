@@ -1,0 +1,392 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --page-bg:
+    radial-gradient(circle at top left, rgba(99, 216, 173, 0.14), transparent 32%),
+    radial-gradient(circle at top right, rgba(246, 212, 107, 0.18), transparent 28%),
+    linear-gradient(180deg, #fbfaf6 0%, #f2eee5 100%);
+  --surface-border: rgba(19, 36, 43, 0.08);
+  --surface-shadow: 0 24px 80px rgba(13, 26, 31, 0.08);
+  --font-display: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  --font-body: "Plus Jakarta Sans", "Trebuchet MS", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--page-bg);
+  color: var(--color-ink-950);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: rgba(66, 197, 156, 0.28);
+}
+
+.site-shell {
+  position: relative;
+}
+
+.site-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(19, 36, 43, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(19, 36, 43, 0.03) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 85%);
+}
+
+.container-shell {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.surface-card {
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--surface-shadow);
+  backdrop-filter: blur(18px);
+}
+
+.pill {
+  @apply inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm font-medium;
+  border-color: rgba(19, 36, 43, 0.12);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.hero-chip {
+  @apply inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm font-medium;
+  border-color: rgba(66, 197, 156, 0.25);
+  background: rgba(99, 216, 173, 0.12);
+  color: var(--color-ink-900);
+}
+
+.primary-button {
+  @apply inline-flex min-h-[52px] items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition duration-200;
+  background: linear-gradient(135deg, #16353e 0%, #2e6463 100%);
+  color: white;
+  box-shadow: 0 16px 40px rgba(22, 53, 62, 0.24);
+}
+
+.primary-button:hover {
+  transform: translateY(-1px);
+}
+
+.primary-button:focus-visible,
+.ghost-button:focus-visible,
+.mode-button:focus-visible,
+.dropzone-button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid #16353e;
+  outline-offset: 3px;
+}
+
+.ghost-button {
+  @apply inline-flex items-center justify-center rounded-full border px-5 py-3 text-sm font-semibold transition duration-200;
+  border-color: rgba(19, 36, 43, 0.16);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--color-ink-900);
+}
+
+.mobile-menu {
+  @apply relative md:hidden;
+}
+
+.mobile-menu-button {
+  @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border bg-white px-4 text-slate-900 shadow-sm;
+  border-color: rgba(19, 36, 43, 0.1);
+}
+
+.mobile-menu-button svg {
+  transition: transform 0.2s ease;
+}
+
+.mobile-menu-panel {
+  @apply rounded-[1.5rem] p-3 backdrop-blur-xl;
+  position: fixed;
+  top: 4.5rem;
+  left: 1rem;
+  right: 1rem;
+  border: 1px solid rgba(19, 36, 43, 0.1);
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+}
+
+.mobile-menu[data-open="true"] .mobile-menu-button {
+  background: #16353e;
+  color: white;
+}
+
+.mobile-menu[data-open="true"] .mobile-menu-button svg {
+  transform: rotate(90deg);
+}
+
+.mobile-menu-link {
+  @apply block rounded-[1rem] px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-slate-950;
+}
+
+.mobile-menu-link--accent {
+  @apply bg-slate-950 text-white hover:bg-slate-900 hover:text-white;
+}
+
+.prose-card p {
+  @apply text-base leading-7 text-slate-700;
+}
+
+.prose-card a {
+  @apply font-medium text-slate-950 underline decoration-slate-300 underline-offset-4;
+}
+
+.prose-card h2 {
+  @apply mt-10 text-2xl font-semibold text-slate-950;
+}
+
+.prose-card h3 {
+  @apply mt-8 text-xl font-semibold text-slate-950;
+}
+
+.prose-card ul,
+.prose-card ol {
+  @apply mt-4 space-y-3 pl-5 text-base leading-7 text-slate-700;
+}
+
+.prose-card li {
+  @apply pl-1;
+}
+
+.tool-panel {
+  @apply rounded-[1.75rem] p-4 sm:rounded-[2rem] sm:p-6 lg:p-8;
+}
+
+.tool-grid {
+  @apply grid gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-6;
+}
+
+.tool-section-accordion {
+  @apply block;
+}
+
+.tool-section-summary {
+  @apply flex cursor-pointer items-center justify-between gap-4 rounded-[1.5rem] border p-4 list-none;
+  border-color: rgba(19, 36, 43, 0.08);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.tool-section-summary::-webkit-details-marker {
+  display: none;
+}
+
+.tool-section-summary::marker {
+  content: "";
+}
+
+.tool-section-body {
+  @apply mt-3;
+}
+
+.tool-section-caret {
+  @apply inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border bg-white;
+  border-color: rgba(19, 36, 43, 0.08);
+}
+
+.tool-section-caret::before {
+  content: "";
+  width: 0.6rem;
+  height: 0.6rem;
+  border-right: 2px solid #13242b;
+  border-bottom: 2px solid #13242b;
+  transform: rotate(45deg) translateY(-1px);
+  transition: transform 0.2s ease;
+}
+
+.tool-section-accordion[open] .tool-section-caret::before {
+  transform: rotate(-135deg) translateY(-1px);
+}
+
+.mode-button {
+  @apply min-h-[50px] rounded-[1rem] px-4 py-3 text-sm font-semibold transition duration-200;
+  color: var(--color-ink-900);
+}
+
+.mode-button[data-active="true"] {
+  background: #16353e;
+  color: white;
+  box-shadow: 0 14px 28px rgba(22, 53, 62, 0.18);
+}
+
+.dropzone {
+  @apply relative flex min-h-[260px] flex-col items-center justify-center rounded-[1.5rem] border-2 border-dashed px-5 py-8 text-center transition duration-200 sm:min-h-[300px] sm:rounded-[1.75rem] sm:px-6 sm:py-10;
+  border-color: rgba(19, 36, 43, 0.16);
+  background:
+    radial-gradient(circle at top, rgba(99, 216, 173, 0.16), transparent 38%),
+    rgba(255, 255, 255, 0.64);
+}
+
+.dropzone[data-dragging="true"] {
+  border-color: rgba(66, 197, 156, 0.9);
+  background:
+    radial-gradient(circle at top, rgba(99, 216, 173, 0.26), transparent 42%),
+    rgba(255, 255, 255, 0.94);
+  transform: translateY(-1px);
+}
+
+.dropzone-button {
+  @apply inline-flex min-h-[52px] w-full items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition duration-200 sm:w-auto;
+  background: linear-gradient(135deg, #42c59c 0%, #2e6463 100%);
+  color: white;
+  box-shadow: 0 16px 32px rgba(66, 197, 156, 0.24);
+}
+
+.stat-card {
+  @apply rounded-[1.5rem] border p-4;
+  border-color: rgba(19, 36, 43, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.preview-card {
+  @apply overflow-hidden rounded-[1.75rem] border;
+  border-color: rgba(19, 36, 43, 0.08);
+  background: white;
+}
+
+.preview-card img {
+  @apply h-full max-h-[260px] w-full object-contain bg-slate-100 sm:max-h-[320px];
+}
+
+.preview-card img:not([src]) {
+  display: none;
+}
+
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+}
+
+.fade-up {
+  animation: fadeUp 0.5s ease both;
+}
+
+.spin-ring {
+  animation: spin 1s linear infinite;
+}
+
+.tool-download-shell {
+  @apply sticky bottom-3 z-20 rounded-[1.5rem] sm:static sm:rounded-[1.75rem] sm:shadow-none;
+  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.2);
+}
+
+@media (max-width: 639px) {
+  .surface-card {
+    box-shadow: 0 16px 50px rgba(13, 26, 31, 0.07);
+  }
+
+  .tool-panel {
+    border-radius: 1.5rem;
+    padding: 1rem;
+  }
+
+  .tool-grid {
+    gap: 1rem;
+  }
+
+  .hero-chip,
+  .pill {
+    font-size: 0.75rem;
+  }
+
+  .mobile-menu-panel {
+    top: 4.25rem;
+  }
+
+  .tool-section-summary {
+    @apply p-3;
+    min-height: 72px;
+  }
+
+  .tool-section-body {
+    @apply mt-2;
+  }
+
+  .dropzone {
+    min-height: 220px;
+    padding: 1.5rem 1rem;
+  }
+
+  .stat-card {
+    border-radius: 1.25rem;
+    padding: 0.9rem;
+  }
+
+  .preview-card {
+    border-radius: 1.25rem;
+  }
+
+  .tool-download-shell {
+    @apply bottom-2 px-4 py-4;
+  }
+}
+
+@media (min-width: 640px) {
+  .tool-section-summary {
+    display: none;
+  }
+
+  .tool-section-body {
+    margin-top: 0;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

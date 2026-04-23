@@ -1,0 +1,27 @@
+---
+import ImageTool from "../../components/ImageTool.astro";
+import Layout from "../../components/Layout.astro";
+
+const description =
+  "Compress JPG, PNG, and WebP images online with instant previews, clear size reduction stats, and unlimited free downloads.";
+---
+
+<Layout title="Compress Images Online" description={description} canonical="/tools/compress">
+  <section class="container-shell pt-14 sm:pt-18">
+    <div class="max-w-3xl">
+      <span class="hero-chip">Unlimited free image compression</span>
+      <h1 class="mt-4 font-display text-4xl font-semibold text-slate-950 sm:text-6xl">Compress images online</h1>
+      <p class="mt-4 text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+        Reduce image size fast while keeping your preferred format, with a clean mobile-friendly workflow and instant before-and-after results.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-shell mt-12">
+    <ImageTool
+      initialMode="compress"
+      title="Compress JPG, PNG, and WebP files with one fast workflow"
+      description="Upload an image, adjust the settings, compare the reduction, and download an optimized file that is ready for websites, stores, and blog posts."
+    />
+  </section>
+</Layout>

@@ -1,0 +1,226 @@
+---
+import toolScript from "../scripts/tool-app.js?url";
+
+interface Props {
+  initialMode?: "compress" | "convert";
+  title?: string;
+  description?: string;
+}
+
+const {
+  initialMode = "compress",
+  title = "Free image compressor and converter built for speed",
+  description = "Upload a JPG, PNG, or WebP image, tune the output, preview the result, and download a clean optimized file in seconds."
+} = Astro.props;
+---
+
+<section
+  id="image-tool"
+  class="tool-panel surface-card fade-up"
+  data-image-tool
+  data-initial-mode={initialMode}
+>
+  <div class="tool-grid">
+    <div class="space-y-4 sm:space-y-5">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <div class="space-y-3">
+          <span class="hero-chip">Unlimited free image tools</span>
+          <div class="hidden flex-wrap gap-2 sm:flex">
+            <span class="pill text-xs text-slate-700">Mobile-friendly workflow</span>
+            <span class="pill text-xs text-slate-700">Instant previews</span>
+            <span class="pill text-xs text-slate-700">Lossless AVIF option</span>
+          </div>
+          <div>
+            <h2 class="font-display text-2xl font-semibold text-slate-950 sm:text-4xl">{title}</h2>
+            <p class="mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">{description}</p>
+          </div>
+        </div>
+
+        <div class="surface-card w-full rounded-[1.25rem] p-1 lg:max-w-[280px]">
+          <div class="grid grid-cols-2 gap-1">
+            <button class="mode-button" data-mode-button="compress" data-active={initialMode === "compress"} type="button">
+              Compress
+            </button>
+            <button class="mode-button" data-mode-button="convert" data-active={initialMode === "convert"} type="button">
+              Convert
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropzone" data-dropzone data-dragging="false">
+        <input class="sr-only" data-file-input type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" />
+        <div class="space-y-4">
+          <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-[1.5rem] bg-slate-950 text-white shadow-lg shadow-slate-900/15">
+            <svg aria-hidden="true" class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path d="M12 16V4m0 0l-4 4m4-4l4 4M4 16.5v1.75A1.75 1.75 0 0 0 5.75 20h12.5A1.75 1.75 0 0 0 20 18.25V16.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <div class="space-y-2">
+            <p class="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Step 1</p>
+            <h3 class="font-display text-2xl font-semibold text-slate-950">Upload your image</h3>
+            <p class="mx-auto max-w-lg text-sm leading-6 text-slate-600">
+              Tap upload or drag in a file. The tool accepts JPG, PNG, and WebP images.
+            </p>
+          </div>
+          <button class="dropzone-button" data-upload-trigger type="button">Upload Image</button>
+        </div>
+      </div>
+
+      <div class="grid gap-4">
+        <details class="tool-section-accordion" data-settings-accordion open>
+          <summary class="tool-section-summary">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Step 2</p>
+              <h3 class="mt-2 text-base font-semibold text-slate-950">Format and quality</h3>
+              <p class="mt-1 text-sm text-slate-500">Tap to adjust export settings.</p>
+            </div>
+            <span class="tool-section-caret" aria-hidden="true"></span>
+          </summary>
+
+          <div class="tool-section-body rounded-[1.5rem] border border-slate-900/8 bg-white/70 p-4">
+            <div class={`rounded-[1.25rem] border border-slate-900/8 bg-white p-4 ${initialMode === "convert" ? "" : "hidden"}`} data-format-wrap>
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <label class="text-sm font-semibold text-slate-700" for="output-format">
+                  Output format
+                </label>
+                <span class="pill border-emerald-200 bg-emerald-50 text-emerald-700">Recommended: WebP</span>
+              </div>
+              <select
+                id="output-format"
+                class="mt-3 w-full rounded-2xl border border-slate-900/10 bg-white px-4 py-3 text-sm text-slate-900"
+                data-format-select
+              >
+                <option value="image/webp">WebP</option>
+                <option value="image/avif">AVIF</option>
+                <option value="image/jpeg">JPG</option>
+                <option value="image/png">PNG</option>
+              </select>
+            </div>
+
+            <div class="mt-4 hidden rounded-[1.25rem] border border-emerald-200/70 bg-emerald-50/80 p-4" data-avif-settings>
+              <div class="flex items-start gap-3">
+                <input
+                  id="avif-lossless"
+                  class="mt-1 h-4 w-4 rounded border-slate-300 text-slate-950 focus:ring-slate-900"
+                  data-avif-lossless
+                  type="checkbox"
+                  checked
+                />
+                <div>
+                  <label class="text-sm font-semibold text-slate-900" for="avif-lossless">Lossless AVIF</label>
+                  <p class="mt-1 text-xs leading-5 text-slate-600">
+                    Keeps original image quality for AVIF exports. This can increase output size and processing time.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 rounded-[1.25rem] border border-slate-900/8 bg-white p-4">
+              <div class="grid gap-4 md:grid-cols-[0.8fr_1.2fr] md:items-end">
+                <div>
+                  <label class="text-sm font-semibold text-slate-700" for="quality-mode">
+                    Quality mode
+                  </label>
+                  <select
+                    id="quality-mode"
+                    class="mt-3 w-full rounded-2xl border border-slate-900/10 bg-white px-4 py-3 text-sm text-slate-900"
+                    data-quality-mode
+                  >
+                    <option value="auto">Auto (recommended)</option>
+                    <option value="manual">Manual</option>
+                  </select>
+                </div>
+
+                <div>
+                  <div class="flex items-center justify-between gap-3">
+                    <label class="text-sm font-semibold text-slate-700" for="quality-slider">
+                      Manual quality
+                    </label>
+                    <span class="pill text-slate-700" data-quality-value>80%</span>
+                  </div>
+                  <input
+                    id="quality-slider"
+                    class="mt-4 w-full accent-slate-950"
+                    data-quality-slider
+                    type="range"
+                    min="30"
+                    max="95"
+                    step="5"
+                    value="80"
+                  />
+                  <p class="mt-2 text-xs text-slate-500" data-quality-hint>
+                    Auto uses smart settings based on file size.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="hidden rounded-[1.5rem] border border-slate-900/8 bg-amber-50/80 px-4 py-3 text-sm text-amber-900" data-processing>
+        <div class="flex items-center gap-3">
+          <span class="spin-ring inline-flex h-5 w-5 rounded-full border-2 border-amber-400 border-t-transparent"></span>
+          <span>Refreshing your optimized image...</span>
+        </div>
+      </div>
+
+      <div class="hidden rounded-[1.5rem] border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-900" data-error role="alert"></div>
+    </div>
+
+    <div class="space-y-4">
+      <div class="grid grid-cols-3 gap-3 sm:gap-4">
+        <div class="stat-card">
+          <p class="text-sm text-slate-500">Original</p>
+          <p class="mt-2 text-lg font-semibold text-slate-950 sm:text-xl" data-original-size>Waiting</p>
+        </div>
+        <div class="stat-card">
+          <p class="text-sm text-slate-500">Optimized</p>
+          <p class="mt-2 text-lg font-semibold text-slate-950 sm:text-xl" data-optimized-size>Waiting</p>
+        </div>
+        <div class="stat-card col-span-2 sm:col-span-1">
+          <p class="text-sm text-slate-500">Delta</p>
+          <p class="mt-2 text-lg font-semibold text-emerald-700 sm:text-xl" data-reduction>0%</p>
+        </div>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <article class="preview-card">
+          <div class="border-b border-slate-900/8 px-4 py-3">
+            <p class="text-sm font-semibold text-slate-900">Original preview</p>
+            <p class="mt-1 text-xs text-slate-500" data-original-meta>Upload an image to see it here.</p>
+          </div>
+          <div class="flex min-h-[220px] items-center justify-center p-4 sm:min-h-[260px]">
+            <img alt="Original preview" data-original-preview loading="lazy" />
+          </div>
+        </article>
+
+        <article class="preview-card">
+          <div class="border-b border-slate-900/8 px-4 py-3">
+            <p class="text-sm font-semibold text-slate-900">Optimized preview</p>
+            <p class="mt-1 text-xs text-slate-500" data-optimized-meta>Processed output will appear here.</p>
+          </div>
+          <div class="flex min-h-[220px] items-center justify-center p-4 sm:min-h-[260px]">
+            <img alt="Optimized preview" data-optimized-preview loading="lazy" />
+          </div>
+        </article>
+      </div>
+
+      <div class="tool-download-shell hidden border border-slate-900/8 bg-slate-950 px-5 py-5 text-white" data-download-wrap>
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.24em] text-white/60">Step 3</p>
+            <p class="mt-2 text-sm text-white/70">Download ready</p>
+            <p class="mt-1 font-medium" data-output-name>optimized.webp</p>
+          </div>
+          <a class="primary-button pointer-events-none w-full opacity-50 sm:w-auto" data-download href="#" download>
+            Download Image
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src={toolScript}></script>
+</section>

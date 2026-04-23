@@ -1,0 +1,33 @@
+---
+import Layout from "../components/Layout.astro";
+
+const description =
+  "Read the privacy policy for Free Image Tools Online, including general data handling, analytics disclosures, and contact information.";
+---
+
+<Layout title="Privacy Policy" description={description} canonical="/privacy-policy">
+  <section class="container-shell pt-14 sm:pt-18">
+    <div class="mx-auto max-w-3xl">
+      <span class="hero-chip">Privacy policy</span>
+      <h1 class="mt-4 font-display text-5xl font-semibold text-slate-950 sm:text-6xl">Privacy Policy</h1>
+      <div class="surface-card prose-card mt-10 rounded-[2rem] p-8">
+        <h2>Image handling</h2>
+        <p>
+          Free Image Tools Online is designed to help visitors compress and convert images quickly. The site is not intended to store user image libraries or build long-term personal profiles around uploaded files.
+        </p>
+
+        <h2>Analytics and advertising</h2>
+        <p>
+          If analytics, advertising, or consent tools are added in production, this page should describe which providers are used, what information may be collected, and how visitors can manage their preferences where required.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          For privacy questions, contact
+          <a class="link-underline font-medium text-slate-950" href="mailto:hello@freeimagetoolsonline.com"> hello@freeimagetoolsonline.com</a>
+          after replacing it with your production address.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

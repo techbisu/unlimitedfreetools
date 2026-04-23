@@ -1,0 +1,22 @@
+{
+  "name": "free-image-tools-online",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@jsquash/avif": "1.1.2-single-thread-only",
+    "astro": "6.1.6",
+    "autoprefixer": "10.5.0",
+    "compressorjs": "^1.2.1",
+    "postcss": "8.5.10",
+    "tailwindcss": "3.4.17"
+  }
+}
