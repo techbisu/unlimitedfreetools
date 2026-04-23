@@ -1,6 +1,4 @@
 ---
-import toolScript from "../scripts/tool-app.js?url";
-
 interface Props {
   initialMode?: "compress" | "convert";
   title?: string;
@@ -230,6 +228,7 @@ const {
       </div>
     </div>
   </div>
-
-  <script type="module" src={toolScript}></script>
+  <script>
+    import "../scripts/tool-app.js";
+  </script>
 </section>
