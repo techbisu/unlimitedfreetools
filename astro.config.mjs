@@ -1,8 +1,10 @@
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "astro/config";
 
+const site = process.env.SITE_URL || "https://free-image-tools-online.vercel.app";
+
 export default defineConfig({
-  site: "https://free-image-tools-online.pages.dev",
+  site,
   output: "static",
   vite: {
     optimizeDeps: {

@@ -25,7 +25,7 @@ const {
 
 const siteName = "Free Image Tools Online";
 const pageTitle = title === siteName ? siteName : `${title} | ${siteName}`;
-const siteUrl = Astro.site ?? new URL("https://free-image-tools-online.pages.dev");
+const siteUrl = Astro.site ?? new URL("https://free-image-tools-online.vercel.app");
 const canonicalUrl = new URL(canonical, siteUrl);
 const imageUrl = new URL(image, siteUrl);
 const defaultStructuredData =
