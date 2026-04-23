@@ -175,8 +175,40 @@ a:focus-visible {
   @apply rounded-[1.75rem] p-4 sm:rounded-[2rem] sm:p-6 lg:p-8;
 }
 
-.tool-grid {
-  @apply grid gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-6;
+.tool-layout {
+  @apply space-y-5 sm:space-y-6;
+}
+
+.tool-top-grid {
+  @apply grid gap-4 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch;
+}
+
+.tool-work-grid {
+  @apply grid gap-4 lg:grid-cols-[340px_minmax(0,1fr)] lg:items-start;
+}
+
+.tool-intro-card {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.tool-settings-column {
+  @apply lg:sticky lg:top-28;
+}
+
+.tool-settings-panel {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.tool-results-column {
+  @apply min-w-0;
+}
+
+.tool-preview-frame {
+  @apply flex min-h-[220px] items-center justify-center p-4 sm:min-h-[260px];
+}
+
+.tool-upload-card {
+  @apply lg:min-h-[100%];
 }
 
 .tool-section-accordion {
@@ -318,10 +350,6 @@ a:focus-visible {
     padding: 1rem;
   }
 
-  .tool-grid {
-    gap: 1rem;
-  }
-
   .hero-chip,
   .pill {
     font-size: 0.75rem;
@@ -366,6 +394,29 @@ a:focus-visible {
 
   .tool-section-body {
     margin-top: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tool-top-grid {
+    gap: 1.5rem;
+  }
+
+  .tool-work-grid {
+    gap: 1.5rem;
+  }
+
+  .tool-preview-frame {
+    min-height: 250px;
+    padding: 1.25rem;
+  }
+
+  .preview-card img {
+    max-height: 240px;
+  }
+
+  .tool-download-shell {
+    position: static;
   }
 }
 
