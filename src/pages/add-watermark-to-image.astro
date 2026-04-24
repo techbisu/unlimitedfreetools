@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import ImageEditorTool from "../components/tools/ImageEditorTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["add-watermark-to-image"];
+const page = pagesBySlug["add-watermark-to-image"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <ImageEditorTool client:load {...(tool.componentProps ?? {})} />
+</ToolPage>

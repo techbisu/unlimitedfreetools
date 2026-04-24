@@ -2,6 +2,7 @@
 import ToolPage from "../components/ToolPage.astro";
 import QRTool from "../components/tools/QRTool.jsx";
 import ImageTool from "../components/tools/ImageTool.jsx";
+import ImageEditorTool from "../components/tools/ImageEditorTool.jsx";
 import PasswordTool from "../components/tools/PasswordTool.jsx";
 import JSONTool from "../components/tools/JSONTool.jsx";
 import UnitTool from "../components/tools/UnitTool.jsx";
@@ -24,6 +25,7 @@ const tool = toolsBySlug[page.toolSlug];
 <ToolPage tool={tool} page={page}>
   {tool.toolKey === "qr" && <QRTool client:load />}
   {tool.toolKey === "image" && <ImageTool client:load {...(tool.componentProps ?? {})} />}
+  {tool.toolKey === "image-editor" && <ImageEditorTool client:load {...(tool.componentProps ?? {})} />}
   {tool.toolKey === "password" && <PasswordTool client:load />}
   {tool.toolKey === "json" && <JSONTool client:load />}
   {tool.toolKey === "unit" && <UnitTool client:load />}

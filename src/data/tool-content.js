@@ -299,6 +299,147 @@ const toolDefinitions = [
     ]
   },
   {
+    slug: "crop-rotate-flip-image",
+    toolKey: "image-editor",
+    name: "Crop / Rotate / Flip Image",
+    shortName: "Crop Image",
+    category: "Free Image Tool",
+    description: "Crop images, rotate the frame, and flip photos online with instant before and after preview.",
+    featureSignals: ["Crop by percentage", "Rotate 90 180 270", "Flip horizontal or vertical", ...sharedSignals],
+    sideHighlights: [
+      "Crop unwanted image edges in seconds",
+      "Rotate photos for the correct orientation",
+      "Flip images horizontally or vertically",
+      "Download the edited image without watermark"
+    ],
+    related: ["image-compressor", "add-watermark-to-image", "blur-image-background"],
+    componentProps: { mode: "transform" },
+    page: makePage({
+      slug: "crop-rotate-flip-image",
+      toolSlug: "crop-rotate-flip-image",
+      metaTitle: "Crop Rotate Flip Image Online Free",
+      metaDescription:
+        "Crop, rotate, and flip images online for free with instant preview and download. No login, no watermark, unlimited use.",
+      h1: "Crop Rotate Flip Image Online Free",
+      intro:
+        "Upload an image, crop away unused edges, rotate the frame, flip it horizontally or vertically, and download the edited result without installing software or creating an account.",
+      seoHeading: "Free online image crop, rotate, and flip tool for fast edits",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "Crop rotate flip image online",
+        benefit:
+          "Visitors searching for quick image edits usually want simple framing controls that work immediately without the overhead of a full design suite.",
+        useCases:
+          "profile photos, ecommerce listings, website banners, blog images, scanned documents, and marketplace uploads",
+        features:
+          "A strong editing page should make crop dimensions clear, keep rotation options obvious, and let users export the final image quickly across desktop and mobile.",
+        linking:
+          "After basic image cleanup, many visitors continue into watermarking, background blur, or image compression, so those connected tools help complete the workflow."
+      }),
+      faqs: makeFaqs([
+        ["Can I crop an image online for free?", "Yes. Upload the image, adjust the crop area, and download the edited file for free without login."],
+        ["Does the tool rotate photos too?", "Yes. You can rotate the image by common angles such as 90, 180, and 270 degrees."],
+        ["Can I flip the image horizontally or vertically?", "Yes. The tool supports both horizontal and vertical flipping."],
+        ["Will the final image have a watermark?", "No. Downloads are clean and ready to use."] 
+      ]),
+      featureSignals: ["Crop by percentage", "Rotate 90 180 270", "Flip horizontal or vertical", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
+    slug: "add-watermark-to-image",
+    toolKey: "image-editor",
+    name: "Add Watermark to Image",
+    shortName: "Watermark",
+    category: "Free Image Tool",
+    description: "Add a text or logo watermark to images online with opacity, size, and position controls.",
+    featureSignals: ["Text watermark", "Logo watermark", "Opacity control", "Corner positioning", ...sharedSignals],
+    sideHighlights: [
+      "Add brand text watermarks to images",
+      "Upload a logo watermark with adjustable opacity",
+      "Place the watermark in any corner or center",
+      "Download a watermarked image with no login"
+    ],
+    related: ["crop-rotate-flip-image", "blur-image-background", "image-compressor"],
+    componentProps: { mode: "watermark" },
+    page: makePage({
+      slug: "add-watermark-to-image",
+      toolSlug: "add-watermark-to-image",
+      metaTitle: "Add Watermark to Image Online Free",
+      metaDescription:
+        "Add text or logo watermark to image online for free with opacity and position controls. No login, no watermark on the tool itself, unlimited use.",
+      h1: "Add Watermark to Image Online Free",
+      intro:
+        "Protect photos, product images, and social posts by placing a text label or logo watermark over the image. Adjust opacity, size, and placement, then export the final file in seconds.",
+      seoHeading: "Free online image watermark maker for brand text and logo overlays",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "Add watermark to image online",
+        benefit:
+          "Watermark searches are usually intent-rich because the visitor already has an image and wants brand protection or attribution with as little friction as possible.",
+        useCases:
+          "product photos, photography proofs, portfolio samples, social graphics, marketplace listings, and blog visuals",
+        features:
+          "Useful watermark pages support both text and logo overlays, keep opacity controls easy to understand, and make corner positioning fast on any screen size.",
+        linking:
+          "Once an image is branded, visitors often still need crop edits, blur effects, or file-size reduction before publishing, so related image tools improve continuity."
+      }),
+      faqs: makeFaqs([
+        ["Can I add a text watermark online for free?", "Yes. You can type a watermark label, choose colors, and export the result for free."],
+        ["Can I use my logo as a watermark?", "Yes. Upload a logo image and place it over the main image with size and opacity controls."],
+        ["Can I change where the watermark appears?", "Yes. The tool lets you place the watermark in different corners or the center."],
+        ["Do I need an account to watermark images?", "No. The tool works without signup."] 
+      ]),
+      featureSignals: ["Text watermark", "Logo watermark", "Opacity control", "Corner positioning", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
+    slug: "blur-image-background",
+    toolKey: "image-editor",
+    name: "Blur Image / Background",
+    shortName: "Blur Image",
+    category: "Free Image Tool",
+    description: "Blur the full image or create a center-focus background blur online with adjustable strength.",
+    featureSignals: ["Full image blur", "Center focus blur", "Adjustable blur strength", "Instant preview", ...sharedSignals],
+    sideHighlights: [
+      "Blur the entire image for a soft effect",
+      "Keep the center clearer while softening the background",
+      "Adjust blur strength and focus size",
+      "Export the final image without sign up"
+    ],
+    related: ["crop-rotate-flip-image", "add-watermark-to-image", "background-remover"],
+    componentProps: { mode: "blur" },
+    page: makePage({
+      slug: "blur-image-background",
+      toolSlug: "blur-image-background",
+      metaTitle: "Blur Image Background Online Free",
+      metaDescription:
+        "Blur image or background online for free with adjustable blur strength and center focus controls. No login, no watermark, unlimited use.",
+      h1: "Blur Image Background Online Free",
+      intro:
+        "Upload an image, blur the entire frame for a soft effect, or keep the center clearer while the background stays blurred. Adjust the blur amount and export the final image right away.",
+      seoHeading: "Free online image blur tool for full-frame blur and center-focus background effects",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "Blur image background online",
+        benefit:
+          "People looking for blur tools often want a fast visual effect for privacy, social posts, or product emphasis without opening heavyweight photo software.",
+        useCases:
+          "portrait posts, thumbnails, ecommerce hero images, presentation slides, social graphics, and quick privacy edits",
+        features:
+          "Strong blur pages make the difference between full-image blur and focus blur obvious, keep intensity controls simple, and return a usable output quickly.",
+        linking:
+          "Blur edits often sit beside crop fixes, watermark overlays, and image compression, so related image tools help users finish the full publishing workflow in one session."
+      }),
+      faqs: makeFaqs([
+        ["Can I blur an image online for free?", "Yes. Upload the file, choose the blur style, and download the result for free."],
+        ["Does the tool blur only the background?", "It supports a center-focus blur effect that keeps the middle area sharper than the rest of the frame."],
+        ["Can I adjust the blur strength?", "Yes. You can increase or decrease the blur amount before exporting."],
+        ["Do I need to install any app?", "No. The blur tool runs in the browser without account setup."] 
+      ]),
+      featureSignals: ["Full image blur", "Center focus blur", "Adjustable blur strength", "Instant preview", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
     slug: "password-generator",
     toolKey: "password",
     name: "Password Generator",
@@ -1144,7 +1285,7 @@ export const siteMeta = {
   name: "UtilityHub",
   tagline: "Unlimited free online tools with no login and no daily limits.",
   description:
-    "Use free QR code, image compressor, password generator, JSON formatter, unit converter, PDF tools, background remover, and YouTube thumbnail tools with no sign up and unlimited access."
+    "Use free QR code, image editing, PDF, background remover, password, JSON, unit converter, and YouTube thumbnail tools with no sign up and unlimited access."
 };
 
 export const toolList = toolDefinitions.map(({ slug, name, shortName, category, description }) => ({
@@ -1158,6 +1299,7 @@ export const toolList = toolDefinitions.map(({ slug, name, shortName, category, 
 export const popularToolSlugs = [
   "qr-code-generator",
   "image-compressor",
+  "crop-rotate-flip-image",
   "pdf-merge",
   "background-remover",
   "password-generator",
@@ -1171,19 +1313,19 @@ export const pagesBySlug = Object.fromEntries(
 );
 
 export const homeContent = {
-  metaTitle: "Free Online QR PDF Image Password JSON and Converter Tools",
+  metaTitle: "Free Online QR PDF Image Editing Password JSON and Converter Tools",
   metaDescription:
-    "Use free online QR code, image compressor, PDF tools, background remover, password generator, JSON formatter, and unit converter tools with no login and instant results.",
-  h1: "Unlimited Free Online Tools for QR Codes, PDFs, Images, Passwords, JSON, and Unit Conversion",
+    "Use free online QR code, image compressor, crop, watermark, blur, PDF tools, background remover, password generator, JSON formatter, and unit converter tools with no login and instant results.",
+  h1: "Unlimited Free Online Tools for QR Codes, PDFs, Image Editing, Passwords, JSON, and Unit Conversion",
   intro:
-    "Use fast online tools with no login, no sign up, and no daily cap. Generate QR codes, merge and split PDFs, compress images and documents, remove image backgrounds, create strong passwords, format JSON, convert units, and download YouTube thumbnails from one clean tools website.",
+    "Use fast online tools with no login, no sign up, and no daily cap. Generate QR codes, merge and split PDFs, compress images and documents, crop photos, add watermarks, blur backgrounds, remove image backgrounds, create strong passwords, format JSON, convert units, and download YouTube thumbnails from one clean tools website.",
   seoHeading: "Free online tools with no login, unlimited use, fast downloads, and SEO friendly utility pages",
   seoParagraphs: buildSeoParagraphs({
     keyword: "Free online tools",
     benefit:
       "A broad tools website performs best when each page solves one clear task quickly while still fitting into a larger internal-link system that helps users discover related utilities.",
     useCases:
-      "creating QR codes, reducing image size, merging and splitting PDFs, removing image backgrounds, generating passwords, formatting JSON, downloading thumbnails, and converting units",
+      "creating QR codes, reducing image size, cropping and watermarking photos, blurring image backgrounds, merging and splitting PDFs, removing image backgrounds, generating passwords, formatting JSON, downloading thumbnails, and converting units",
     features:
       "Pages that emphasize no login, unlimited free use, fast results, clear downloads, and mobile-friendly controls align closely with what users search for in the utility space.",
     linking:
@@ -1191,7 +1333,7 @@ export const homeContent = {
   }),
   faqs: makeFaqs([
     ["Are these online tools free to use forever?", "Yes. The tools are designed for unlimited free use with no login, no forced registration, and no visible daily cap."],
-    ["Which tools are included on the website?", "The site includes QR code, image, PDF, background remover, password, JSON, unit conversion, and YouTube thumbnail tools."],
+    ["Which tools are included on the website?", "The site includes QR code, image compression and editing, PDF, background remover, password, JSON, unit conversion, and YouTube thumbnail tools."],
     ["Do I need to create an account to use the tools?", "No. You can open the page, use the tool immediately, and download or copy the result without signing in."],
     ["What are the biggest benefits of these tools?", "The main benefits are no login, unlimited access, fast results, easy mobile use, and clear feature options for common everyday tasks."]
   ])
