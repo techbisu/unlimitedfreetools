@@ -1,45 +1,63 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "../../components/Layout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdBlock from "../../components/AdBlock.astro";
+import BlogCard from "../../components/BlogCard.astro";
+import PopularTools from "../../components/PopularTools.astro";
+import LatestBlogPosts from "../../components/LatestBlogPosts.astro";
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
 const description =
-  "Browse image optimization articles covering image compression, AVIF, WebP, SEO, faster page speed, and practical publishing tips.";
+  "Read practical guides about QR codes, image compression, PDF tasks, background removal, YouTube thumbnails, and everyday free online tools.";
 ---
 
-<Layout title="Blog" description={description} canonical="/blog">
-  <section class="container-shell pt-14 sm:pt-18">
-    <div class="max-w-3xl">
-      <span class="hero-chip">Blog</span>
-      <h1 class="mt-4 font-display text-5xl font-semibold text-slate-950 sm:text-6xl">Image optimization blog</h1>
-      <p class="mt-4 text-lg leading-8 text-slate-600">
-        Explore practical guides about image compression, AVIF conversion, WebP, SEO, page speed, and image publishing strategies for growing websites.
-      </p>
-    </div>
+<BaseLayout title="Blog" description={description} canonical="/blog">
+  <section class="section-band">
+    <div class="container-shell space-y-8">
+      <div class="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_320px]">
+        <div class="surface-panel-strong p-6 sm:p-8">
+          <span class="eyebrow">Blog</span>
+          <h1 class="mt-4 text-4xl font-semibold tracking-tight text-strong sm:text-5xl">Guides for QR, image, PDF, and utility tool workflows</h1>
+          <p class="mt-4 max-w-3xl text-base leading-8 text-muted">
+            Browse step-by-step articles about creating QR codes, reducing image and PDF file size, choosing better formats, improving page speed, and using free tools more effectively.
+          </p>
+        </div>
 
-    <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-      {posts.map((post) => (
-        <article class="surface-card rounded-[2rem] p-6">
-          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{post.data.category}</p>
-          <h2 class="mt-3 font-display text-2xl font-semibold text-slate-950">
-            <a class="transition hover:text-slate-700" href={`/blog/${post.id}/`}>
-              {post.data.title}
-            </a>
-          </h2>
-          <p class="mt-3 text-base leading-7 text-slate-600">{post.data.excerpt}</p>
-          <div class="mt-5 flex items-center justify-between gap-3 text-sm text-slate-500">
-            <time datetime={post.data.pubDate.toISOString()}>
-              {post.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-            </time>
-            <a class="link-underline font-medium text-slate-950" href={`/blog/${post.id}/`}>
-              Read article
-            </a>
-          </div>
-        </article>
-      ))}
+        <div class="surface-panel p-6">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-soft">What you will find here</p>
+          <ul class="mt-4 space-y-3 text-sm leading-7 text-muted">
+            <li>Practical QR, PDF, and image workflows</li>
+            <li>SEO-friendly publishing advice for faster pages</li>
+            <li>Comparisons between formats like JPG, WebP, and AVIF</li>
+            <li>How-to articles built around free online tools</li>
+          </ul>
+        </div>
+      </div>
+
+      <AdBlock variant="top" />
     </div>
   </section>
-</Layout>
+
+  <section class="section-band pt-0">
+    <div class="container-shell">
+      <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {posts.map((post) => (
+          <BlogCard post={post} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-band pt-0">
+    <div class="container-shell">
+      <AdBlock variant="mid" />
+    </div>
+  </section>
+
+  <PopularTools />
+  <LatestBlogPosts />
+  <AdBlock variant="sticky" />
+</BaseLayout>

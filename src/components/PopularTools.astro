@@ -1,0 +1,36 @@
+---
+import ToolCard from "./ToolCard.astro";
+import { popularToolSlugs, toolsBySlug } from "../data/tool-content.js";
+
+interface Props {
+  currentSlug?: string;
+  title?: string;
+}
+
+const { currentSlug, title = "Popular free tools visitors use across the site" } = Astro.props;
+
+const tools = popularToolSlugs
+  .filter((slug) => slug !== currentSlug)
+  .map((slug) => toolsBySlug[slug])
+  .filter(Boolean)
+  .slice(0, 3);
+---
+
+{
+  tools.length > 0 && (
+    <section class="section-band pt-0">
+      <div class="container-shell">
+        <div>
+          <span class="eyebrow">Popular Tools</span>
+          <h2 class="mt-4 text-3xl font-semibold text-strong">{title}</h2>
+        </div>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {tools.map((tool) => (
+            <ToolCard href={`/${tool.slug}`} title={tool.name} category={tool.category} description={tool.description} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

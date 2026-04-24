@@ -1,0 +1,33 @@
+---
+import ToolCard from "./ToolCard.astro";
+import { toolsBySlug } from "../data/tool-content.js";
+
+interface Props {
+  currentSlug: string;
+}
+
+const { currentSlug } = Astro.props;
+const current = toolsBySlug[currentSlug];
+const relatedTools = (current?.related ?? []).map((slug) => toolsBySlug[slug]).filter(Boolean);
+---
+
+{
+  relatedTools.length > 0 && (
+    <section class="section-band pt-0">
+      <div class="container-shell">
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <span class="eyebrow">Related Tools</span>
+            <h2 class="mt-4 text-3xl font-semibold text-strong">More free tools you can use right away</h2>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {relatedTools.map((tool) => (
+            <ToolCard href={`/${tool.slug}`} title={tool.name} category={tool.category} description={tool.description} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

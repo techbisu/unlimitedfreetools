@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import JSONTool from "../components/tools/JSONTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["json-formatter"];
+const page = pagesBySlug["json-formatter"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <JSONTool client:load />
+</ToolPage>

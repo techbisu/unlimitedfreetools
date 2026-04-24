@@ -1,49 +1,101 @@
-# Free Image Tools Online
+# Unlimited Free Tools
 
-Production-ready Astro application for compressing and converting images with a fast SEO-focused content site around the tools.
+SEO-focused Astro project for a multi-tool website with browser-only utilities, static blog content, and scalable landing pages.
 
-## Overview
+## Included tools
 
-Free Image Tools Online includes:
+- QR code generator with logo overlay and PNG download
+- Image compressor and converter for JPG, PNG, WebP, and AVIF
+- Password generator with strength feedback
+- JSON formatter, validator, and minifier
+- Unit converter for length, weight, and temperature
+- PDF merge
+- PDF split by page range
+- PDF compress for image-heavy documents
+- Background remover with on-page AI processing
+- YouTube thumbnail downloader for image extraction only
 
-- Image compression with same-format output
-- Image conversion to WebP, AVIF, JPG, and PNG
-- Before/after previews with size comparison
-- Downloadable optimized output
-- Mobile-first tool UX
-- Blog listing and dynamic article pages
-- About, Contact, and Privacy Policy pages
-- Sitemap and metadata structure for search indexing
+## SEO features
+
+- Dedicated tool pages and 30+ SEO landing pages
+- Static blog built with Astro Content Collections
+- Structured data for tool pages and blog posts
+- Sitemap generation at `/sitemap.xml`
+- `robots.txt`
+- Internal linking blocks for related tools, popular tools, and latest posts
 
 ## Stack
 
-- Astro 6
-- Vanilla JavaScript
+- Astro 5
 - Tailwind CSS
-- Compressor.js
+- React islands with `@astrojs/react`
+- `qrcode`
+- `pdf-lib`
+- `pdfjs-dist`
 - `@jsquash/avif`
+- `@imgly/background-removal`
+- `onnxruntime-web`
 
-## Project Structure
+## Project structure
 
 ```text
 src/
-  components/
-  content/
-    blog/
-  pages/
-    blog/
-    tools/
-  scripts/
-  styles/
-public/
+├── components/
+│   ├── AdBlock.astro
+│   ├── BlogCard.astro
+│   ├── FAQSection.astro
+│   ├── Footer.astro
+│   ├── LatestBlogPosts.astro
+│   ├── Navbar.astro
+│   ├── PopularTools.astro
+│   ├── RelatedTools.astro
+│   ├── SEOSection.astro
+│   ├── ToolCard.astro
+│   ├── ToolPage.astro
+│   └── tools/
+│       ├── BGRemover.jsx
+│       ├── ImageTool.jsx
+│       ├── JSONTool.jsx
+│       ├── PasswordTool.jsx
+│       ├── PDFTool.jsx
+│       ├── QRTool.jsx
+│       ├── UnitTool.jsx
+│       └── YTTool.jsx
+├── content/
+│   └── blog/
+├── data/
+│   ├── site-config.js
+│   └── tool-content.js
+├── layouts/
+│   └── BaseLayout.astro
+├── pages/
+│   ├── index.astro
+│   ├── qr-code-generator.astro
+│   ├── image-compressor.astro
+│   ├── password-generator.astro
+│   ├── json-formatter.astro
+│   ├── unit-converter.astro
+│   ├── pdf-merge.astro
+│   ├── pdf-split.astro
+│   ├── pdf-compress.astro
+│   ├── background-remover.astro
+│   ├── youtube-thumbnail-downloader.astro
+│   ├── [slug].astro
+│   └── blog/
+│       ├── index.astro
+│       └── [slug].astro
+└── utils/
+    ├── background.js
+    ├── convert.js
+    ├── image.js
+    ├── json.js
+    ├── password.js
+    ├── pdf.js
+    ├── qr.js
+    └── youtube.js
 ```
 
-## Local Development
-
-Requirements:
-
-- Node.js 22+
-- npm
+## Local development
 
 Install dependencies:
 
@@ -57,61 +109,30 @@ Start the dev server:
 npm run dev
 ```
 
-Create a production build:
+Open the Astro URL shown in the terminal, usually:
+
+```text
+http://127.0.0.1:4321
+```
+
+## Production build
 
 ```bash
 npm run build
-```
-
-Preview the production build:
-
-```bash
 npm run preview
 ```
 
-## Blog Content
+## Configuration
 
-Blog posts are stored in `src/content/blog`.
+Main configuration files:
 
-To add a new article:
-
-1. Create a new `.md` file inside `src/content/blog`
-2. Add frontmatter matching the content collection schema
-3. Push the change and Astro will generate the blog index and detail page automatically
-
-## Vercel Deployment
-
-This project is configured as a static Astro site and is ready to deploy on Vercel.
-
-### Recommended Setup
-
-- Framework preset: `Astro`
-- Install command: `npm install`
-- Build command: `npm run build`
-- Output directory: `dist`
-
-### Production Environment Variable
-
-Set this in Vercel before the production deploy:
-
-```bash
-SITE_URL=https://your-production-domain.com
-```
-
-This value is used for canonical URLs, Open Graph URLs, and structured data.
-
-### Deploy from Git
-
-1. Import the GitHub repository into Vercel
-2. Let Vercel detect Astro automatically
-3. Add the `SITE_URL` environment variable
-4. Deploy
-
-After the first import, every push to `main` can trigger a new production deployment.
+- `astro.config.mjs` for site URL and Astro integrations
+- `src/data/site-config.js` for global site settings, including ad placeholder toggles
+- `src/data/tool-content.js` for tool metadata and SEO landing page content
+- `src/content.config.ts` for the blog content schema
 
 ## Notes
 
-- AVIF export uses `@jsquash/avif`
-- Compression preserves same-format output in compress mode
-- The tool UI automatically refreshes output when settings change
-- Sitemap generation is handled by `src/pages/sitemap.xml.ts`
+- All tool processing is implemented without a backend.
+- The YouTube tool only extracts thumbnail images. It does not download video files.
+- Background removal and PDF processing use large client-side dependencies, so those features are loaded only when their tool routes are used.

@@ -1,0 +1,17 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  category: string;
+  description: string;
+}
+
+const { href, title, category, description } = Astro.props;
+---
+
+<article class="surface-panel p-6">
+  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-soft">{category}</p>
+  <h2 class="mt-3 text-2xl font-semibold text-strong">{title}</h2>
+  <p class="mt-3 text-sm leading-7 text-muted">{description}</p>
+  <a class="btn-secondary mt-6" href={href}>Open tool</a>
+</article>

@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import ImageTool from "../components/tools/ImageTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["image-compressor"];
+const page = pagesBySlug["image-compressor"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <ImageTool client:load {...(tool.componentProps ?? {})} />
+</ToolPage>

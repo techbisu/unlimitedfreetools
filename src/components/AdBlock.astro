@@ -1,0 +1,41 @@
+---
+import { siteConfig } from "../data/site-config.js";
+
+interface Props {
+  variant?: "top" | "mid" | "sticky";
+}
+
+const { variant = "mid" } = Astro.props;
+
+const labels = {
+  top: "Top banner ad placeholder",
+  mid: "Mid-content ad placeholder",
+  sticky: "Mobile sticky ad placeholder"
+};
+
+const sizeLabels = {
+  top: "Responsive leaderboard",
+  mid: "In-content rectangle",
+  sticky: "320 x 50 mobile slot"
+};
+---
+
+{
+  siteConfig.ads.enabled && siteConfig.ads[variant] !== false && (
+    <aside
+      class:list={[
+        "ad-slot",
+        variant === "sticky" && "sticky-mobile-ad fixed z-40 md:hidden",
+        variant === "top" && "min-h-[112px]",
+        variant === "mid" && "min-h-[120px]"
+      ]}
+      aria-label={labels[variant]}
+    >
+      <div class="space-y-2">
+        <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-soft">Advertising</p>
+        <p class="text-sm font-semibold text-strong">{labels[variant]}</p>
+        <p class="text-xs text-muted">{sizeLabels[variant]}</p>
+      </div>
+    </aside>
+  )
+}

@@ -1,0 +1,33 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import QRTool from "../components/tools/QRTool.jsx";
+import ImageTool from "../components/tools/ImageTool.jsx";
+import PasswordTool from "../components/tools/PasswordTool.jsx";
+import JSONTool from "../components/tools/JSONTool.jsx";
+import UnitTool from "../components/tools/UnitTool.jsx";
+import PDFTool from "../components/tools/PDFTool.jsx";
+import BGRemover from "../components/tools/BGRemover.jsx";
+import YTTool from "../components/tools/YTTool.jsx";
+import { pagesBySlug, seoLandingPages, toolsBySlug } from "../data/tool-content.js";
+
+export function getStaticPaths() {
+  return seoLandingPages.map((page) => ({
+    params: { slug: page.slug }
+  }));
+}
+
+const { slug } = Astro.params;
+const page = pagesBySlug[slug];
+const tool = toolsBySlug[page.toolSlug];
+---
+
+<ToolPage tool={tool} page={page}>
+  {tool.toolKey === "qr" && <QRTool client:load />}
+  {tool.toolKey === "image" && <ImageTool client:load {...(tool.componentProps ?? {})} />}
+  {tool.toolKey === "password" && <PasswordTool client:load />}
+  {tool.toolKey === "json" && <JSONTool client:load />}
+  {tool.toolKey === "unit" && <UnitTool client:load />}
+  {tool.toolKey === "pdf" && <PDFTool client:load {...(tool.componentProps ?? {})} />}
+  {tool.toolKey === "background" && <BGRemover client:load />}
+  {tool.toolKey === "youtube" && <YTTool client:load />}
+</ToolPage>

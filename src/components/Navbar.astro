@@ -1,0 +1,134 @@
+---
+import { popularToolSlugs, siteMeta, toolsBySlug } from "../data/tool-content.js";
+
+const navTools = popularToolSlugs.slice(0, 4).map((slug) => toolsBySlug[slug]).filter(Boolean);
+---
+
+<header class="site-header sticky top-0 z-30 backdrop-blur-xl">
+  <div class="container-shell">
+    <div class="flex min-h-[72px] items-center justify-between gap-3 sm:min-h-[76px] sm:gap-4">
+      <a class="flex min-w-0 items-center gap-3" href="/">
+        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,#0f8b8d,#176087)] text-sm font-bold text-white sm:h-11 sm:w-11 sm:text-base">
+          UH
+        </span>
+        <div class="min-w-0">
+          <p class="truncate text-sm font-semibold text-[var(--ink)] sm:text-base">{siteMeta.name}</p>
+          <p class="hidden truncate text-xs text-[var(--muted)] sm:block">{siteMeta.tagline}</p>
+        </div>
+      </a>
+
+      <nav class="hidden items-center gap-5 lg:flex" aria-label="Primary">
+        {navTools.map((tool) => (
+          <a class="text-sm font-medium text-[var(--muted)] transition hover:text-[var(--ink)]" href={`/${tool.slug}`}>
+            {tool.shortName}
+          </a>
+        ))}
+        <a class="text-sm font-medium text-[var(--muted)] transition hover:text-[var(--ink)]" href="/blog">Blog</a>
+      </nav>
+
+      <div class="flex shrink-0 items-center gap-2">
+        <button
+          class="icon-button"
+          data-theme-toggle
+          type="button"
+          aria-label="Toggle dark mode"
+        >
+          <svg class="theme-toggle-light h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77" stroke-linecap="round"></path>
+          </svg>
+          <svg class="theme-toggle-dark hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+
+        <button
+          class="icon-button lg:hidden"
+          type="button"
+          data-mobile-nav-toggle
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Open navigation menu"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-nav" class="site-mobile-panel hidden py-4 lg:hidden" data-mobile-nav>
+      <nav class="grid gap-2" aria-label="Mobile">
+        {navTools.map((tool) => (
+          <a class="rounded-xl px-3 py-3 text-sm font-medium text-[var(--muted)] transition hover:bg-white/70 hover:text-[var(--ink)] dark:hover:bg-slate-900" href={`/${tool.slug}`}>
+            {tool.name}
+          </a>
+        ))}
+        <a class="rounded-xl px-3 py-3 text-sm font-medium text-[var(--muted)] transition hover:bg-white/70 hover:text-[var(--ink)] dark:hover:bg-slate-900" href="/blog">
+          Blog
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  const applyThemeState = () => {
+    const isDark = document.documentElement.classList.contains("dark");
+    document.querySelectorAll(".theme-toggle-light").forEach((node) => node.classList.toggle("hidden", isDark));
+    document.querySelectorAll(".theme-toggle-dark").forEach((node) => node.classList.toggle("hidden", !isDark));
+  };
+
+  const setupThemeToggle = () => {
+    applyThemeState();
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      if (button.dataset.bound === "true") {
+        return;
+      }
+
+      button.dataset.bound = "true";
+      button.addEventListener("click", () => {
+        const nextDark = !document.documentElement.classList.contains("dark");
+        document.documentElement.classList.toggle("dark", nextDark);
+        localStorage.setItem("utilityhub-theme", nextDark ? "dark" : "light");
+        applyThemeState();
+      });
+    });
+  };
+
+  const setupMobileNav = () => {
+    const toggle = document.querySelector("[data-mobile-nav-toggle]");
+    const panel = document.querySelector("[data-mobile-nav]");
+
+    if (!toggle || !panel || toggle.dataset.bound === "true") {
+      return;
+    }
+
+    toggle.dataset.bound = "true";
+
+    const setOpen = (open) => {
+      panel.classList.toggle("hidden", !open);
+      toggle.setAttribute("aria-expanded", String(open));
+    };
+
+    toggle.addEventListener("click", () => {
+      const open = toggle.getAttribute("aria-expanded") === "true";
+      setOpen(!open);
+    });
+
+    panel.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setOpen(false));
+    });
+  };
+
+  const bootNav = () => {
+    setupThemeToggle();
+    setupMobileNav();
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bootNav, { once: true });
+  } else {
+    bootNav();
+  }
+</script>

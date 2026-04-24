@@ -1,0 +1,33 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title?: string;
+  items: FAQItem[];
+}
+
+const { title = "Frequently asked questions", items } = Astro.props;
+---
+
+<section class="section-band pt-0">
+  <div class="container-shell">
+    <div class="surface-panel p-6 sm:p-8">
+      <div class="max-w-3xl">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="mt-4 text-3xl font-semibold text-strong">{title}</h2>
+      </div>
+
+      <div class="mt-8 grid gap-4">
+        {items.map((item, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

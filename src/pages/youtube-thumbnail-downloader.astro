@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import YTTool from "../components/tools/YTTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["youtube-thumbnail-downloader"];
+const page = pagesBySlug["youtube-thumbnail-downloader"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <YTTool client:load />
+</ToolPage>

@@ -1,0 +1,23 @@
+---
+interface Props {
+  heading: string;
+  paragraphs: string[];
+}
+
+const { heading, paragraphs } = Astro.props;
+---
+
+<section class="section-band pt-0">
+  <div class="container-shell">
+    <div class="surface-panel p-6 sm:p-8">
+      <span class="eyebrow">Tool Guide</span>
+      <h2 class="mt-4 max-w-3xl text-3xl font-semibold text-strong">{heading}</h2>
+
+      <div class="copy-block mt-6 grid gap-5">
+        {paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

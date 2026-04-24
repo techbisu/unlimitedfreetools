@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import PDFTool from "../components/tools/PDFTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["pdf-split"];
+const page = pagesBySlug["pdf-split"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <PDFTool client:load {...(tool.componentProps ?? {})} />
+</ToolPage>

@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import BlogCard from "./BlogCard.astro";
+
+interface Props {
+  excludeSlug?: string;
+  title?: string;
+}
+
+const { excludeSlug, title = "Latest blog posts for SEO, images, PDFs, and QR workflows" } = Astro.props;
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft))
+  .filter((post) => post.id !== excludeSlug)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+{
+  posts.length > 0 && (
+    <section class="section-band pt-0">
+      <div class="container-shell">
+        <div>
+          <span class="eyebrow">Latest Blog Posts</span>
+          <h2 class="mt-4 text-3xl font-semibold text-strong">{title}</h2>
+        </div>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {posts.map((post) => (
+            <BlogCard post={post} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

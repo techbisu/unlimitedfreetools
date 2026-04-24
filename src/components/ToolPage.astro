@@ -1,0 +1,107 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AdBlock from "./AdBlock.astro";
+import FAQSection from "./FAQSection.astro";
+import SEOSection from "./SEOSection.astro";
+import RelatedTools from "./RelatedTools.astro";
+import PopularTools from "./PopularTools.astro";
+import LatestBlogPosts from "./LatestBlogPosts.astro";
+
+interface ToolPageData {
+  slug: string;
+  toolSlug: string;
+  metaTitle: string;
+  metaDescription: string;
+  h1: string;
+  intro: string;
+  seoHeading: string;
+  seoParagraphs: string[];
+  faqs: Array<{ question: string; answer: string }>;
+  featureSignals?: string[];
+}
+
+interface ToolDefinition {
+  slug: string;
+  name: string;
+  category: string;
+  description: string;
+  sideHighlights: string[];
+  componentProps?: Record<string, unknown>;
+}
+
+interface Props {
+  tool: ToolDefinition;
+  page: ToolPageData;
+}
+
+const { tool, page } = Astro.props;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: page.h1,
+  applicationCategory: tool.category,
+  operatingSystem: "Any",
+  isAccessibleForFree: true,
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD"
+  },
+  description: page.metaDescription,
+  url: new URL(`/${page.slug}`, Astro.site ?? new URL("https://utilityhub.example.com")).toString()
+};
+---
+
+<BaseLayout
+  title={page.metaTitle}
+  description={page.metaDescription}
+  canonical={`/${page.slug}`}
+  faqItems={page.faqs}
+  structuredData={structuredData}
+>
+  <section class="section-band">
+    <div class="container-shell space-y-10 sm:space-y-12">
+      <div class="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_320px]">
+        <div class="surface-panel-strong p-6 sm:p-8">
+          <span class="eyebrow">{tool.category}</span>
+          <h1 class="mt-4 text-4xl font-semibold tracking-tight text-strong sm:text-5xl">{page.h1}</h1>
+          <p class="mt-4 max-w-3xl text-base leading-8 text-muted">{page.intro}</p>
+          <div class="mt-6 flex flex-wrap gap-2">
+            {(page.featureSignals ?? []).map((signal) => (
+              <span class="chip-tag">{signal}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="surface-panel p-6">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-soft">Main Tool Features</p>
+          <ul class="mt-4 space-y-3 text-sm leading-7 text-muted">
+            {tool.sideHighlights.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <AdBlock variant="top" />
+
+      <div class="pt-2 sm:pt-3">
+        <slot />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-band pt-0">
+    <div class="container-shell">
+      <AdBlock variant="mid" />
+    </div>
+  </section>
+
+  <SEOSection heading={page.seoHeading} paragraphs={page.seoParagraphs} />
+  <FAQSection items={page.faqs} />
+  <RelatedTools currentSlug={tool.slug} />
+  <PopularTools currentSlug={tool.slug} />
+  <LatestBlogPosts />
+  <AdBlock variant="sticky" />
+</BaseLayout>

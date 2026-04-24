@@ -1,20 +1,16 @@
-import { fileURLToPath } from "node:url";
 import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
 
-const site = process.env.SITE_URL || "https://free-image-tools-online.vercel.app";
+const site = process.env.SITE_URL || "https://utilityhub.example.com";
 
 export default defineConfig({
   site,
   output: "static",
+  integrations: [react(), sitemap()],
   vite: {
     optimizeDeps: {
-      exclude: ["@jsquash/avif"]
-    },
-    resolve: {
-      alias: {
-        "astro/entrypoints/prerender": fileURLToPath(new URL("./node_modules/astro/dist/entrypoints/prerender.js", import.meta.url)),
-        "astro/entrypoints/legacy": fileURLToPath(new URL("./node_modules/astro/dist/entrypoints/legacy.js", import.meta.url))
-      }
+      exclude: ["@jsquash/avif", "@imgly/background-removal", "onnxruntime-web"]
     }
   }
 });

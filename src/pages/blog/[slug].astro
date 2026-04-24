@@ -1,6 +1,12 @@
 ---
 import { getCollection, render } from "astro:content";
-import Layout from "../../components/Layout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdBlock from "../../components/AdBlock.astro";
+import PopularTools from "../../components/PopularTools.astro";
+import LatestBlogPosts from "../../components/LatestBlogPosts.astro";
+import RelatedTools from "../../components/RelatedTools.astro";
+import BlogCard from "../../components/BlogCard.astro";
+import { toolsBySlug } from "../../data/tool-content.js";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
@@ -12,46 +18,127 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
-const description = post.data.description;
-const structuredData = {
+const { Content, headings } = await render(post);
+const allPosts = (await getCollection("blog", ({ data }) => !data.draft)).filter((entry) => entry.id !== post.id);
+const relatedPosts = allPosts
+  .map((entry) => {
+    const sharedTags = entry.data.tags.filter((tag) => post.data.tags.includes(tag)).length;
+    const categoryScore = entry.data.category === post.data.category ? 2 : 0;
+
+    return {
+      entry,
+      score: sharedTags + categoryScore
+    };
+  })
+  .sort((a, b) => b.score - a.score || b.entry.data.pubDate.valueOf() - a.entry.data.pubDate.valueOf())
+  .slice(0, 3)
+  .map((item) => item.entry);
+
+const primaryRelatedTool = post.data.relatedTools.find((slug) => toolsBySlug[slug]) ?? "image-compressor";
+
+const articleSchema = {
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
+  "@type": "Article",
   headline: post.data.title,
   description: post.data.description,
+  image: new URL(post.data.featuredImage, Astro.site ?? new URL("https://utilityhub.example.com")).toString(),
+  author: {
+    "@type": "Person",
+    name: post.data.author
+  },
   datePublished: post.data.pubDate.toISOString(),
   ...(post.data.updatedDate ? { dateModified: post.data.updatedDate.toISOString() } : {}),
-  articleSection: post.data.category,
-  mainEntityOfPage: `https://free-image-tools-online.pages.dev/blog/${post.id}/`,
-  url: `https://free-image-tools-online.pages.dev/blog/${post.id}/`
+  mainEntityOfPage: new URL(`/blog/${post.id}/`, Astro.site ?? new URL("https://utilityhub.example.com")).toString()
 };
 ---
 
-<Layout
+<BaseLayout
   title={post.data.title}
-  description={description}
+  description={post.data.description}
   canonical={`/blog/${post.id}/`}
-  type="article"
-  structuredData={structuredData}
+  image={post.data.featuredImage}
+  structuredData={articleSchema}
 >
-  <article class="container-shell pt-14 sm:pt-18">
-    <div class="mx-auto max-w-3xl">
-      <span class="hero-chip">{post.data.category}</span>
-      <h1 class="mt-4 font-display text-5xl font-semibold text-slate-950 sm:text-6xl">{post.data.title}</h1>
-      <div class="mt-5 flex flex-wrap items-center gap-4 text-sm text-slate-500">
-        <time datetime={post.data.pubDate.toISOString()}>
-          Published {post.data.pubDate.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
-        </time>
-        {post.data.updatedDate && (
-          <time datetime={post.data.updatedDate.toISOString()}>
-            Updated {post.data.updatedDate.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+  <section class="section-band">
+    <div class="container-shell space-y-8">
+      <div class="surface-panel-strong p-6 sm:p-8">
+        <span class="eyebrow">{post.data.category}</span>
+        <h1 class="mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-strong sm:text-5xl">{post.data.title}</h1>
+        <div class="mt-5 flex flex-wrap items-center gap-4 text-sm text-muted">
+          <span>By {post.data.author}</span>
+          <time datetime={post.data.pubDate.toISOString()}>
+            {post.data.pubDate.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
           </time>
-        )}
+          {post.data.updatedDate && (
+            <time datetime={post.data.updatedDate.toISOString()}>
+              Updated {post.data.updatedDate.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+            </time>
+          )}
+        </div>
+        <p class="mt-4 max-w-3xl text-base leading-8 text-muted">{post.data.excerpt}</p>
       </div>
 
-      <div class="surface-card prose-card mt-10 rounded-[2rem] p-8">
-        <Content />
+      <AdBlock variant="top" />
+    </div>
+  </section>
+
+  <section class="section-band pt-0">
+    <div class="container-shell">
+      <div class="grid gap-6 lg:grid-cols-[minmax(0,240px)_minmax(0,1fr)]">
+        <aside class="surface-panel h-fit p-5">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-soft">Table of contents</p>
+          <nav class="mt-4 grid gap-2">
+            {headings.length > 0 ? (
+              headings.map((heading) => (
+                <a class="toc-link" href={`#${heading.slug}`}>{heading.text}</a>
+              ))
+            ) : (
+              <p class="text-sm text-muted">No section links available for this article.</p>
+            )}
+          </nav>
+        </aside>
+
+        <article class="surface-panel p-6 sm:p-8">
+          <img
+            class="h-auto w-full rounded-2xl border border-[color:var(--surface-border)] object-cover"
+            src={post.data.featuredImage}
+            alt={post.data.featuredImageAlt}
+            loading="eager"
+          />
+
+          <div class="article-copy mt-8">
+            <Content />
+          </div>
+        </article>
       </div>
     </div>
-  </article>
-</Layout>
+  </section>
+
+  <section class="section-band pt-0">
+    <div class="container-shell">
+      <AdBlock variant="mid" />
+    </div>
+  </section>
+
+  {relatedPosts.length > 0 && (
+    <section class="section-band pt-0">
+      <div class="container-shell">
+        <div>
+          <span class="eyebrow">Related Articles</span>
+          <h2 class="mt-4 text-3xl font-semibold text-strong">More articles you can read next</h2>
+        </div>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {relatedPosts.map((entry) => (
+            <BlogCard post={entry} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <RelatedTools currentSlug={primaryRelatedTool} />
+  <PopularTools />
+  <LatestBlogPosts excludeSlug={post.id} />
+  <AdBlock variant="sticky" />
+</BaseLayout>

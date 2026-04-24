@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow:
 
-Sitemap: https://free-image-tools-online.pages.dev/sitemap.xml
+Sitemap: https://utilityhub.example.com/sitemap.xml

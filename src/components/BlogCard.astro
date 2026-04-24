@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="surface-panel p-6">
+  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-soft">{post.data.category}</p>
+  <h2 class="mt-3 text-2xl font-semibold text-strong">
+    <a class="transition hover:text-[color:var(--muted)]" href={`/blog/${post.id}/`}>
+      {post.data.title}
+    </a>
+  </h2>
+  <p class="mt-3 text-sm leading-7 text-muted">{post.data.excerpt}</p>
+  <div class="mt-6 flex flex-wrap items-center justify-between gap-3 text-sm text-muted">
+    <time datetime={post.data.pubDate.toISOString()}>
+      {post.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+    </time>
+    <a class="btn-secondary" href={`/blog/${post.id}/`}>Read more</a>
+  </div>
+</article>

@@ -10,6 +10,11 @@ const blog = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     category: z.string(),
+    author: z.string().default("UtilityHub Editorial"),
+    featuredImage: z.string().default("/images/blog/tools-guide-cover.svg"),
+    featuredImageAlt: z.string().default("Featured article illustration"),
+    tags: z.array(z.string()).default([]),
+    relatedTools: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
     draft: z.boolean().default(false)
   })

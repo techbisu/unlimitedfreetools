@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import BGRemover from "../components/tools/BGRemover.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["background-remover"];
+const page = pagesBySlug["background-remover"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <BGRemover client:load />
+</ToolPage>

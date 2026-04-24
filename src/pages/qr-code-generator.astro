@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import QRTool from "../components/tools/QRTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["qr-code-generator"];
+const page = pagesBySlug["qr-code-generator"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <QRTool client:load />
+</ToolPage>

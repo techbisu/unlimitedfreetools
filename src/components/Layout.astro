@@ -1,80 +1,29 @@
 ---
-import Header from "./Header.astro";
-import Footer from "./Footer.astro";
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 interface Props {
   title?: string;
   description: string;
   canonical?: string;
   image?: string;
-  type?: "website" | "article";
-  keywords?: string;
   structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
 const {
-  title = "Free Image Tools Online",
+  title = "UtilityHub",
   description,
-  canonical = Astro.url.pathname,
-  image = "/favicon.svg",
-  type = "website",
-  keywords = "free image compressor, free image converter, AVIF converter, WebP converter, JPG compressor, PNG compressor, image optimizer, image resize tool",
+  canonical,
+  image,
   structuredData
 } = Astro.props;
-
-const siteName = "Free Image Tools Online";
-const pageTitle = title === siteName ? siteName : `${title} | ${siteName}`;
-const siteUrl = Astro.site ?? new URL("https://free-image-tools-online.vercel.app");
-const canonicalUrl = new URL(canonical, siteUrl);
-const imageUrl = new URL(image, siteUrl);
-const defaultStructuredData =
-  structuredData ??
-  {
-    "@context": "https://schema.org",
-    "@type": type === "article" ? "Article" : "WebSite",
-    name: pageTitle,
-    headline: pageTitle,
-    description,
-    url: canonicalUrl.toString(),
-    image: imageUrl.toString()
-  };
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{pageTitle}</title>
-    <meta name="description" content={description} />
-    <meta name="keywords" content={keywords} />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#16353E" />
-    <meta name="robots" content="index, follow" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href={canonicalUrl} />
-
-    <meta property="og:type" content={type} />
-    <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={imageUrl} />
-    <meta property="og:site_name" content={siteName} />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={imageUrl} />
-    <script type="application/ld+json" set:html={JSON.stringify(defaultStructuredData)}></script>
-
-    <slot name="head" />
-  </head>
-  <body class="site-shell antialiased">
-    <Header />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-  </body>
-</html>
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  image={image}
+  structuredData={structuredData}
+>
+  <slot />
+</BaseLayout>
