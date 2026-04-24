@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import ScreenshotBeautifier from "../components/tools/ScreenshotBeautifier.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["screenshot-beautifier"];
+const page = pagesBySlug["screenshot-beautifier"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <ScreenshotBeautifier client:load />
+</ToolPage>

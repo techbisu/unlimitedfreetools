@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import ColorPaletteFromImageTool from "../components/tools/ColorPaletteFromImageTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["color-palette-from-image"];
+const page = pagesBySlug["color-palette-from-image"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <ColorPaletteFromImageTool client:load />
+</ToolPage>

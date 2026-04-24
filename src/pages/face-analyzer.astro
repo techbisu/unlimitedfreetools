@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import FaceAnalyzerTool from "../components/tools/FaceAnalyzerTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["face-analyzer"];
+const page = pagesBySlug["face-analyzer"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <FaceAnalyzerTool client:load />
+</ToolPage>

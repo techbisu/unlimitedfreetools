@@ -2,39 +2,46 @@
 import { siteConfig } from "../data/site-config.js";
 
 interface Props {
-  variant?: "top" | "mid" | "sticky";
+  position?: "top" | "middle" | "bottom";
+  variant?: "top" | "mid" | "sticky" | "bottom";
 }
 
-const { variant = "mid" } = Astro.props;
+const { variant, position } = Astro.props;
+const resolvedVariant =
+  variant ??
+  (position === "top" ? "top" : position === "middle" ? "mid" : position === "bottom" ? "bottom" : "mid");
 
 const labels = {
   top: "Top banner ad placeholder",
   mid: "Mid-content ad placeholder",
-  sticky: "Mobile sticky ad placeholder"
+  sticky: "Mobile sticky ad placeholder",
+  bottom: "Bottom section ad placeholder"
 };
 
 const sizeLabels = {
   top: "Responsive leaderboard",
   mid: "In-content rectangle",
-  sticky: "320 x 50 mobile slot"
+  sticky: "320 x 50 mobile slot",
+  bottom: "Wide footer-friendly rectangle"
 };
 ---
 
 {
-  siteConfig.ads.enabled && siteConfig.ads[variant] !== false && (
+  siteConfig.ads.enabled && siteConfig.ads[resolvedVariant] !== false && (
     <aside
       class:list={[
         "ad-slot",
-        variant === "sticky" && "sticky-mobile-ad fixed z-40 md:hidden",
-        variant === "top" && "min-h-[112px]",
-        variant === "mid" && "min-h-[120px]"
+        resolvedVariant === "sticky" && "sticky-mobile-ad fixed z-40 md:hidden",
+        resolvedVariant === "top" && "min-h-[112px]",
+        resolvedVariant === "mid" && "min-h-[120px]",
+        resolvedVariant === "bottom" && "min-h-[120px]"
       ]}
-      aria-label={labels[variant]}
+      aria-label={labels[resolvedVariant]}
     >
       <div class="space-y-2">
         <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-soft">Advertising</p>
-        <p class="text-sm font-semibold text-strong">{labels[variant]}</p>
-        <p class="text-xs text-muted">{sizeLabels[variant]}</p>
+        <p class="text-sm font-semibold text-strong">{labels[resolvedVariant]}</p>
+        <p class="text-xs text-muted">{sizeLabels[resolvedVariant]}</p>
       </div>
     </aside>
   )

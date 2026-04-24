@@ -4,6 +4,7 @@ export const siteConfig = {
     enabled: false,
     top: false,
     mid: false,
+    bottom: false,
     sticky: false
   }
 };

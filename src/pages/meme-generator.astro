@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import MemeGenerator from "../components/tools/MemeGenerator.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["meme-generator"];
+const page = pagesBySlug["meme-generator"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <MemeGenerator client:load />
+</ToolPage>

@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import PDFToImageTool from "../components/tools/PDFToImageTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["pdf-to-image"];
+const page = pagesBySlug["pdf-to-image"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <PDFToImageTool client:load />
+</ToolPage>

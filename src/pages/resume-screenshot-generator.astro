@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import ResumeScreenshotGenerator from "../components/tools/ResumeScreenshotGenerator.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["resume-screenshot-generator"];
+const page = pagesBySlug["resume-screenshot-generator"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <ResumeScreenshotGenerator client:load />
+</ToolPage>

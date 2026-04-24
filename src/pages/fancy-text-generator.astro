@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import FancyTextGenerator from "../components/tools/FancyTextGenerator.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["fancy-text-generator"];
+const page = pagesBySlug["fancy-text-generator"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <FancyTextGenerator client:load />
+</ToolPage>

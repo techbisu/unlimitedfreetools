@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import RoastMyBioTool from "../components/tools/RoastMyBioTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["roast-my-bio"];
+const page = pagesBySlug["roast-my-bio"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <RoastMyBioTool client:load />
+</ToolPage>

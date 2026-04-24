@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import QRDesignerTool from "../components/tools/QRDesignerTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["qr-designer"];
+const page = pagesBySlug["qr-designer"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <QRDesignerTool client:load />
+</ToolPage>

@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import AIProfilePhotoGeneratorTool from "../components/tools/AIProfilePhotoGeneratorTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["ai-profile-photo-generator"];
+const page = pagesBySlug["ai-profile-photo-generator"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <AIProfilePhotoGeneratorTool client:load />
+</ToolPage>

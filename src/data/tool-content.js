@@ -1070,6 +1070,48 @@ const toolDefinitions = [
     ]
   },
   {
+    slug: "unlock-pdf-online",
+    toolKey: "pdf-unlock",
+    name: "Unlock PDF",
+    shortName: "Unlock PDF",
+    category: "Free PDF Tool",
+    description: "Remove a PDF password online using the correct password and download an unlocked copy that is processed locally in the browser.",
+    featureSignals: ["Correct password only", "Browser-side processing", "Fast unlocked download", "No server upload", ...sharedSignals],
+    sideHighlights: [
+      "Unlock password-protected PDFs with the correct password",
+      "Create a new unlocked PDF directly in the browser",
+      "Show file name, size, progress, and download state",
+      "No password cracking, no server upload, no account"
+    ],
+    related: ["pdf-merge", "pdf-split", "pdf-compress", "qr-code-generator"],
+    componentProps: {},
+    page: makePage({
+      slug: "unlock-pdf-online",
+      toolSlug: "unlock-pdf-online",
+      metaTitle: "Unlock PDF Online Free (Remove Password Easily)",
+      metaDescription:
+        "Remove password from PDF online for free. 100% secure, works in your browser. No upload required.",
+      h1: "Unlock PDF Online (Remove Password)",
+      intro:
+        "Free, secure, and works in your browser",
+      seoHeading: "How to unlock a PDF online safely when you already know the password",
+      seoParagraphs: [
+        "Unlocking a PDF online should be simple when you already know the document password. This tool is designed for that exact use case. You upload the protected file, enter the correct password, and the page creates a fresh unlocked PDF copy that is easier to open, share, print, or archive later. It does not guess, crack, or bypass passwords. If the password is wrong, the document stays locked and the tool shows an error instead of trying unsafe workarounds. That keeps the workflow straightforward and aligned with legitimate personal and business use.",
+        "A browser-based unlock flow is useful because many password-protected PDFs are opened repeatedly after the first secure exchange. Teams often protect contracts, reports, invoices, and internal handouts while sending them, then need a clean unlocked copy for daily access afterward. With this page, the unlock step happens right away without desktop software, sign-up screens, or waiting for a remote conversion queue. The result is a downloadable PDF that is easier to reuse in document systems, email threads, and internal filing processes once the original protection is no longer needed.",
+        "Security matters even more than convenience on pages like this. The PDF is processed locally in your browser, which means the file and password are not uploaded to a server for unlocking. That local-first approach is a better fit for sensitive contracts, legal paperwork, school files, client records, and private business documents. It also reduces friction because the page can start working immediately after you select the file. Once the unlocked copy is downloaded, you can continue with related steps such as merging pages, splitting sections, compressing a large document, or generating a QR code that links to the final file for easier sharing."
+      ],
+      faqs: makeFaqs([
+        ["Can I unlock PDF without password?", "No. This tool does not crack or bypass protection. You must enter the correct password to create an unlocked copy."],
+        ["Is this unlock PDF tool safe?", "Yes. The processing happens locally in your browser and is intended only for PDFs that you are authorized to unlock."],
+        ["Does it upload my file?", "No. The PDF and password stay in your browser during processing and are not uploaded to a server."],
+        ["Why do I see an incorrect password message?", "That message appears when the PDF password is wrong or missing. Enter the exact password used to open the document."],
+        ["Will the unlocked PDF look the same as the original?", "The unlocked copy keeps each page visually intact so you can download and use it more easily after entering the correct password."]
+      ]),
+      featureSignals: ["Correct password only", "Browser-side processing", "Fast unlocked download", "No server upload", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
     slug: "background-remover",
     toolKey: "background",
     name: "Background Remover",
@@ -1278,6 +1320,664 @@ const toolDefinitions = [
         ]
       })
     ]
+  },
+  {
+    slug: "screenshot-beautifier",
+    toolKey: "screenshot-beautifier",
+    name: "Screenshot Beautifier",
+    shortName: "Beautifier",
+    category: "Free Design Tool",
+    description: "Wrap screenshots in gradients, rounded corners, padding, and shadow, then export a polished PNG in the browser.",
+    featureSignals: ["Gradient backdrops", "Rounded corners", "Canvas PNG export", "Copy and share buttons", ...sharedSignals],
+    sideHighlights: [
+      "Upload screenshots and style them instantly",
+      "Add rounded corners, padding, and shadow depth",
+      "Choose a gradient backdrop for social-ready frames",
+      "Export PNG or copy the final image in one click"
+    ],
+    related: ["meme-generator", "image-to-sketch", "qr-designer"],
+    componentProps: {},
+    page: makePage({
+      slug: "screenshot-beautifier",
+      toolSlug: "screenshot-beautifier",
+      metaTitle: "Screenshot Beautifier Online Free With Gradient PNG Export",
+      metaDescription:
+        "Beautify screenshots online with rounded corners, shadow, padding, gradient backgrounds, and instant PNG export. Browser only, no login required.",
+      h1: "Screenshot Beautifier Online With Gradient Backgrounds and PNG Export",
+      intro:
+        "Upload a screenshot, wrap it in a styled frame, adjust rounded corners, increase shadow depth, add generous padding, and export a cleaner PNG for launch posts, changelogs, portfolios, testimonials, and social media carousels without leaving the browser.",
+      seoHeading: "Free screenshot beautifier for launch posts, product updates, carousels, and polished social sharing",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "Screenshot beautifier online",
+        benefit:
+          "People searching for screenshot styling want a faster way to make UI captures feel presentable without opening a heavy design app just to add padding, gradients, and rounded corners.",
+        useCases:
+          "product launch threads, app store screenshots, changelog posts, onboarding guides, portfolio case studies, tutorial graphics, and social media carousels",
+        features:
+          "A high-performing page in this space should keep the upload and preview above the fold, show instant framing changes, and make PNG export, copy, and sharing obvious so the user can move from raw capture to finished asset in seconds.",
+        linking:
+          "After styling a screenshot, many visitors still need to turn it into a meme, convert the image into a sketch, or attach it to a QR-powered landing page. Related links keep that momentum inside the site and support deeper browsing."
+      }),
+      faqs: makeFaqs([
+        ["Can I beautify screenshots without Photoshop or Figma?", "Yes. Upload the image, adjust the frame settings, and export the styled PNG directly in the browser."],
+        ["Does the screenshot beautifier add rounded corners and shadow?", "Yes. You can control rounded corners, outer padding, shadow depth, and gradient background styling in real time."],
+        ["Is the export a PNG file?", "Yes. The tool exports a PNG so the styled screenshot stays sharp for product posts, social media, and presentations."],
+        ["Does the screenshot leave my browser?", "No. The screenshot beautifier runs fully client-side, so the image is processed locally in your browser."]
+      ]),
+      featureSignals: ["Gradient backdrops", "Rounded corners", "Canvas PNG export", "Copy and share buttons", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
+    slug: "fancy-text-generator",
+    toolKey: "fancy-text-generator",
+    name: "Fancy Text Generator",
+    shortName: "Fancy Text",
+    category: "Free Social Tool",
+    description: "Generate bold Unicode, italic Unicode, small caps, wide text, and Zalgo styles online with one-click copy buttons.",
+    featureSignals: ["Bold and italic Unicode", "Small caps", "Zalgo text", "Copy and share outputs", ...sharedSignals],
+    sideHighlights: [
+      "Convert plain text into multiple Unicode styles",
+      "Copy each output individually for bios and captions",
+      "Download all styles in a single text file",
+      "Works without external font libraries or APIs"
+    ],
+    related: ["meme-generator", "screenshot-beautifier", "qr-designer"],
+    componentProps: {},
+    page: makePage({
+      slug: "fancy-text-generator",
+      toolSlug: "fancy-text-generator",
+      metaTitle: "Fancy Text Generator Online Free for Unicode Bio and Caption Styles",
+      metaDescription:
+        "Generate fancy text online for free with bold Unicode, italic Unicode, small caps, wide text, and Zalgo styles. Copy each output instantly.",
+      h1: "Fancy Text Generator Online for Bios, Captions, Usernames, and Memes",
+      intro:
+        "Enter plain text once and instantly generate multiple Unicode styles for social bios, gamer tags, captions, meme formats, Discord channels, display names, and creative posts. Copy each version separately or export all generated text in one file.",
+      seoHeading: "Free fancy text generator for viral captions, display names, bios, and creative social posts",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "Fancy text generator online",
+        benefit:
+          "Users who search for text styling tools usually want fast Unicode output that works in popular apps, with no font downloads, no sign-in, and clear copy buttons for each style.",
+        useCases:
+          "Instagram bios, TikTok captions, gamer usernames, Discord servers, meme overlays, YouTube titles, and attention-grabbing social posts",
+        features:
+          "Pages in this category perform better when they show many styles at once, include one-click copy actions, keep the preview live while typing, and explain that the formatting is built from Unicode characters rather than downloadable font files.",
+        linking:
+          "A visitor generating stylized text may next want to turn that phrase into a meme image, place it over a beautified screenshot, or pair it with a branded QR code for a campaign. Those related routes improve session depth and internal discovery."
+      }),
+      faqs: makeFaqs([
+        ["Does this fancy text generator use real fonts?", "No. It uses Unicode character mappings so you can copy and paste the styled text into many apps and social platforms."],
+        ["Can I copy each output separately?", "Yes. Every generated style includes its own copy button so you can grab only the version you want."],
+        ["Which styles are included?", "The tool includes bold Unicode, italic Unicode, bold italic, small caps, wide text, and Zalgo output."],
+        ["Do I need any extension or plugin?", "No. The generator runs in the browser and does not rely on extensions, downloads, or external APIs."]
+      ]),
+      featureSignals: ["Bold and italic Unicode", "Small caps", "Zalgo text", "Copy and share outputs", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
+    slug: "meme-generator",
+    toolKey: "meme-generator",
+    name: "Meme Generator",
+    shortName: "Meme Maker",
+    category: "Free Viral Tool",
+    description: "Create memes from uploads or built-in templates, drag text into position, and download a finished meme image instantly.",
+    featureSignals: ["Built-in templates", "Upload your own image", "Drag text position", "Canvas meme export", ...sharedSignals],
+    sideHighlights: [
+      "Choose from built-in meme templates or upload your own image",
+      "Add top and bottom text with draggable placement",
+      "Resize captions before exporting the final meme",
+      "Download, copy, or share the image directly from the page"
+    ],
+    related: ["screenshot-beautifier", "fancy-text-generator", "image-to-sketch"],
+    componentProps: {},
+    page: makePage({
+      slug: "meme-generator",
+      toolSlug: "meme-generator",
+      metaTitle: "Meme Generator Online Free With Templates and Drag Text Controls",
+      metaDescription:
+        "Create memes online for free with image upload, built-in templates, top and bottom text, draggable text positions, and instant download.",
+      h1: "Meme Generator Online With Templates, Uploads, Drag Text, and Instant Download",
+      intro:
+        "Build memes directly in the browser by starting from a template or uploading your own image. Add top and bottom captions, drag each text block into position, adjust the size, preview the result instantly, and export a PNG ready for posts, replies, and community content.",
+      seoHeading: "Free meme generator for viral posts, community content, quick reactions, and social sharing",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "Meme generator online",
+        benefit:
+          "Searchers using meme-related keywords care about speed and flexibility. They want to upload an image, type a joke, drag the captions until the composition feels right, and export without any account friction.",
+        useCases:
+          "reaction posts, startup launch jokes, Discord communities, creator content, product update threads, livestream graphics, and casual social engagement",
+        features:
+          "A strong meme page should support both templates and uploads, keep text movement direct and visual, and make the download path obvious. The more immediate the preview feels, the more likely people are to use the tool repeatedly for quick social content.",
+        linking:
+          "Meme creation often overlaps with other visual tasks such as styling screenshots, generating fancy text for captions, or converting a photo into a sketch-style graphic. Internal links between those tools create a stronger viral-media cluster."
+      }),
+      faqs: makeFaqs([
+        ["Can I upload my own image to make a meme?", "Yes. You can upload your own photo or graphic, then place meme text over it directly in the browser."],
+        ["Does the meme generator include templates too?", "Yes. The page includes built-in starter templates so you can make a meme immediately without needing an upload."],
+        ["Can I drag the text position?", "Yes. Top and bottom text can be dragged on the live preview before you download the meme."],
+        ["Is the meme exported as an image?", "Yes. The meme downloads as a PNG image that you can post or share right away."]
+      ]),
+      featureSignals: ["Built-in templates", "Upload your own image", "Drag text position", "Canvas meme export", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
+    slug: "qr-designer",
+    toolKey: "qr-designer",
+    name: "QR Code Designer",
+    shortName: "QR Designer",
+    category: "Free QR Tool",
+    description: "Create advanced styled QR codes with custom dot shapes, corner styles, colors, center logo overlays, and PNG or SVG export.",
+    featureSignals: ["Dot style controls", "Corner style controls", "Logo overlay", "PNG and SVG download", ...sharedSignals],
+    sideHighlights: [
+      "Generate QR codes for links, menus, campaigns, and packaging",
+      "Customize dot styles, corner eyes, and color palette",
+      "Upload a logo to the center of the QR code",
+      "Export both PNG and SVG directly from the browser"
+    ],
+    related: ["qr-code-generator", "screenshot-beautifier", "meme-generator"],
+    componentProps: {},
+    page: makePage({
+      slug: "qr-designer",
+      toolSlug: "qr-designer",
+      metaTitle: "Advanced QR Code Designer Online Free With Logo PNG and SVG Export",
+      metaDescription:
+        "Design QR codes online with advanced styling, custom dots, corner eyes, logo overlay, and PNG or SVG export. Browser only and free to use.",
+      h1: "Advanced QR Code Designer Online With Styled Dots, Corner Eyes, and Logo Overlay",
+      intro:
+        "Design branded QR codes for product packaging, creator profiles, restaurant menus, event signage, payment pages, and marketing campaigns. Customize the dot pattern, style the corner eyes, adjust foreground and background colors, add a center logo, and export sharp PNG or SVG files instantly.",
+      seoHeading: "Advanced QR code designer for branded campaigns, product packaging, menus, and creator links",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "Advanced QR code designer online",
+        benefit:
+          "Visitors using this search phrase want more than a basic black-and-white square. They are usually comparing branding controls such as dot shape, corner style, logo overlays, and vector export before choosing a tool.",
+        useCases:
+          "restaurant menus, creator bios, packaging inserts, WiFi cards, business cards, event signage, product labels, and marketing campaigns",
+        features:
+          "Pages in the advanced QR segment perform better when they combine scan-safe rendering with visible design controls, immediate preview updates, and both PNG and SVG export. That balance attracts users who care about both aesthetics and practical use.",
+        linking:
+          "Someone making a branded QR code often also needs a screenshot card for social promotion, a meme or caption asset for community sharing, or a simpler QR generator for fast bulk tasks. Related routes help serve all of those adjacent needs."
+      }),
+      faqs: makeFaqs([
+        ["Can I customize the QR dots and corner eyes?", "Yes. The QR designer supports multiple dot styles and corner-eye styles so the code feels more branded than a default generator."],
+        ["Does this QR tool support a center logo?", "Yes. You can upload a logo image and place it in the center of the QR code with extra spacing for scan reliability."],
+        ["Can I download SVG as well as PNG?", "Yes. The page supports both PNG and SVG export for print and digital workflows."],
+        ["Is the QR code generated in the browser?", "Yes. The QR code is built client-side and does not require any backend or external API call."]
+      ]),
+      featureSignals: ["Dot style controls", "Corner style controls", "Logo overlay", "PNG and SVG download", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
+    slug: "image-to-sketch",
+    toolKey: "image-to-sketch",
+    name: "Image to Sketch Converter",
+    shortName: "Sketch",
+    category: "Free Image Tool",
+    description: "Convert images into grayscale pencil-style sketches with edge emphasis and instant PNG download in the browser.",
+    featureSignals: ["Pencil sketch effect", "Edge detection blend", "Instant preview", "PNG export and copy", ...sharedSignals],
+    sideHighlights: [
+      "Upload photos and convert them into sketch-style artwork",
+      "Adjust softness, edge depth, and contrast live",
+      "Compare the original photo and processed result",
+      "Download or copy the sketch image without leaving the page"
+    ],
+    related: ["screenshot-beautifier", "background-remover", "meme-generator"],
+    componentProps: {},
+    page: makePage({
+      slug: "image-to-sketch",
+      toolSlug: "image-to-sketch",
+      metaTitle: "Image to Sketch Converter Online Free With Pencil Effect Export",
+      metaDescription:
+        "Convert images to sketch online for free with grayscale shading, edge detection, pencil-style rendering, and instant PNG download.",
+      h1: "Image to Sketch Converter Online With Pencil-Style Effect and PNG Download",
+      intro:
+        "Turn photos into sketch-style artwork in the browser with a grayscale base, blended edge detection, and pencil shading controls. Upload an image, tune the effect live, preview the result instantly, and download a finished PNG for posters, moodboards, avatars, and social content.",
+      seoHeading: "Free image to sketch converter for pencil-style effects, avatars, posters, and social graphics",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "Image to sketch converter online",
+        benefit:
+          "People searching for sketch conversion want a fast visual transformation without installing a desktop editor or learning complicated layer blending workflows.",
+        useCases:
+          "profile pictures, poster mockups, creator thumbnails, classroom handouts, moodboards, printable art experiments, and stylized social graphics",
+        features:
+          "The strongest pages in this category combine quick uploads with visible controls for softness, edge strength, and contrast, then present a side-by-side preview so the user can judge the effect before downloading.",
+        linking:
+          "Once a sketch image is created, visitors may want to remove the background, style a screenshot, or turn the result into a meme or social card. Connecting those tasks with related links helps the site capture broader creative workflows."
+      }),
+      faqs: makeFaqs([
+        ["How does the image to sketch converter work?", "The tool uses grayscale shading, blur-based pencil blending, and edge detection to create a sketch-style effect in the browser."],
+        ["Can I adjust the sketch strength?", "Yes. You can tune softness, edge depth, and contrast to get a lighter or stronger pencil look."],
+        ["What file format can I download?", "The converted sketch downloads as a PNG image."],
+        ["Does the photo get uploaded anywhere?", "No. The image processing happens client-side in your browser."]
+      ]),
+      featureSignals: ["Pencil sketch effect", "Edge detection blend", "Instant preview", "PNG export and copy", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
+    slug: "pdf-to-image",
+    toolKey: "pdf-to-image",
+    name: "PDF to Image Converter",
+    shortName: "PDF to Image",
+    category: "Free PDF Tool",
+    description: "Convert PDF pages into PNG or JPG images locally in the browser with page previews and one-click downloads.",
+    featureSignals: ["PDF.js page rendering", "PNG and JPG export", "Per-page downloads", "Works offline after load", ...sharedSignals],
+    sideHighlights: [
+      "Upload a PDF and turn every page into an image",
+      "Choose PNG or JPG output before conversion",
+      "Preview each rendered page instantly",
+      "Download individual page images without leaving the browser"
+    ],
+    related: ["unlock-pdf-online", "pdf-merge", "image-compressor"],
+    componentProps: {},
+    page: makePage({
+      slug: "pdf-to-image",
+      toolSlug: "pdf-to-image",
+      metaTitle: "PDF to Image Converter Online Free PNG and JPG Export",
+      metaDescription:
+        "Convert PDF to image online for free with local browser rendering, page previews, and PNG or JPG download. No upload, no login, instant results.",
+      h1: "PDF to Image Converter Online With PNG and JPG Export",
+      intro:
+        "Upload a PDF, render each page locally in the browser, preview the results instantly, and download each page as a PNG or JPG. The tool runs fully client-side after load, so your document stays on your device while you turn pages into image files for slides, thumbnails, docs, and social sharing.",
+      seoHeading: "Free PDF to image converter for page previews, exports, and browser-only processing",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "PDF to image converter online",
+        benefit:
+          "People searching for this task usually need page-level exports quickly for presentations, content repurposing, design review, or sharing a single PDF page in chat and social apps. A browser-first flow is especially useful because it removes software installs and keeps the conversion fast on desktop and mobile.",
+        useCases:
+          "presentation slides, report snapshots, client approvals, blog illustrations, lesson handouts, social posts, thumbnails, and design review comments",
+        features:
+          "A strong page in this category should keep the upload simple, render pages clearly, offer PNG and JPG export, and show progress while processing larger files. Those details help the route match high-intent searches such as convert PDF page to image, save PDF as PNG, and PDF to JPG online free.",
+        linking:
+          "After converting pages into images, users often need image compression for sharing, PDF unlock for protected files, or merge and split tools for document cleanup. Linking those workflows together keeps the site useful for a full document session rather than a single isolated task."
+      }),
+      faqs: makeFaqs([
+        ["Can I convert every page of a PDF into an image?", "Yes. The tool renders each page and shows a downloadable image preview for every page in the document."],
+        ["Can I choose PNG or JPG output?", "Yes. You can switch between PNG and JPG before starting the conversion."],
+        ["Does the PDF get uploaded to a server?", "No. The conversion runs locally in your browser after the page loads."],
+        ["Will it work on mobile too?", "Yes. The tool is responsive and can be used on phones and tablets as well as desktop browsers."]
+      ]),
+      featureSignals: ["PDF.js page rendering", "PNG and JPG export", "Per-page downloads", "Works offline after load", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
+    slug: "resume-screenshot-generator",
+    toolKey: "resume-screenshot-generator",
+    name: "Resume Screenshot Generator",
+    shortName: "Resume Shot",
+    category: "Free Career Tool",
+    description: "Turn resume text, a resume PDF, or a resume image into a polished screenshot card with PNG export.",
+    featureSignals: ["Resume card layout", "Text or file input", "PNG export", "Instant browser preview", ...sharedSignals],
+    sideHighlights: [
+      "Paste resume content or upload a resume PDF/image",
+      "Generate a clean shareable resume card instantly",
+      "Preview the card before exporting",
+      "Download a polished PNG for LinkedIn, portfolios, or job threads"
+    ],
+    related: ["pdf-to-image", "screenshot-beautifier", "fake-chat-generator"],
+    componentProps: {},
+    page: makePage({
+      slug: "resume-screenshot-generator",
+      toolSlug: "resume-screenshot-generator",
+      metaTitle: "Resume Screenshot Generator Online Free PNG Export",
+      metaDescription:
+        "Create a resume screenshot online for free from text, PDF, or image input. Generate a polished preview card and export it as PNG in the browser.",
+      h1: "Resume Screenshot Generator Online for Shareable Resume Cards",
+      intro:
+        "Create a clean resume screenshot card for job posts, portfolio pages, LinkedIn updates, and creator-style career content. Paste your resume text or upload a PDF or image, preview the layout instantly, and export a polished PNG that is easier to share than a full document attachment.",
+      seoHeading: "Free resume screenshot generator for job updates, portfolio sharing, and social posts",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "Resume screenshot generator online",
+        benefit:
+          "Searchers in this niche usually want a faster and more visual way to share their experience than sending a full PDF. A sharp card preview helps them post on social platforms, send a quick update in chat, or build a portfolio graphic without opening a design app.",
+        useCases:
+          "LinkedIn announcements, X job threads, creator posts, portfolio homepages, freelance proposals, referral requests, and personal landing pages",
+        features:
+          "The most useful pages let users start from plain text or an existing resume file, keep the layout readable on mobile, and make PNG export obvious. Those are the practical details that matter more than template overload for this kind of fast career-sharing tool.",
+        linking:
+          "Users building a resume screenshot may also need PDF to image conversion, screenshot beautifying, or profile-photo editing to assemble a stronger application package. Internal links to those steps create a better career-tools cluster across the site."
+      }),
+      faqs: makeFaqs([
+        ["Can I create a resume screenshot from text only?", "Yes. Paste resume content into the editor and the tool generates a clean visual card."],
+        ["Can I upload a PDF resume too?", "Yes. You can upload a resume PDF and use the first rendered page as the screenshot source."],
+        ["What file format does the tool export?", "The generated card downloads as a PNG image."],
+        ["Does the resume leave my device?", "No. The preview and export happen locally in the browser."]
+      ]),
+      featureSignals: ["Resume card layout", "Text or file input", "PNG export", "Instant browser preview", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
+    slug: "roast-my-bio",
+    toolKey: "roast-my-bio",
+    name: "Roast My Bio Generator",
+    shortName: "Bio Roast",
+    category: "Free Viral Tool",
+    description: "Generate funny roast variations from your bio text with local templates, instant copy buttons, and share-ready outputs.",
+    featureSignals: ["Entertainment only", "Multiple roast variations", "Copy and share buttons", "Randomized local templates", ...sharedSignals],
+    sideHighlights: [
+      "Paste a bio and generate funny roast variations instantly",
+      "Copy individual roasts with one click",
+      "Refresh for new combinations without using any API",
+      "Download the roast set as a text file for sharing"
+    ],
+    related: ["fancy-text-generator", "meme-generator", "fake-chat-generator"],
+    componentProps: {},
+    page: makePage({
+      slug: "roast-my-bio",
+      toolSlug: "roast-my-bio",
+      metaTitle: "Roast My Bio Generator Online Free Funny Bio Roasts",
+      metaDescription:
+        "Paste your bio and generate funny roast variations online for free. Entertainment only, instant copy buttons, no login, and no API required.",
+      h1: "Roast My Bio Generator Online for Funny, Shareable Bio Burns",
+      intro:
+        "Paste an Instagram bio, dating profile blurb, startup founder intro, creator description, or personal tagline and generate a set of funny roast variations instantly. The tool works fully in the browser with local templates and randomization, so you can make shareable jokes without using any backend or external AI service.",
+      seoHeading: "Funny roast my bio generator for social profiles, creators, and entertainment posts",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "Roast my bio generator",
+        benefit:
+          "This type of page performs best when it delivers humor immediately. Visitors are usually browsing for entertainment, group chats, or social content ideas, so the page needs fast output, obvious copy actions, and a clear disclaimer that the result is just for fun.",
+        useCases:
+          "friend group jokes, Instagram bios, creator intros, dating profile banter, team roasts, Discord community posts, and meme captions",
+        features:
+          "The strongest version of this tool offers multiple roast styles at once, keeps the randomness local, and makes it easy to regenerate fresh lines without retyping the bio. That supports both repeat usage and sharing, which matters more here than complex settings.",
+        linking:
+          "Users enjoying a playful text tool often continue to meme generation, fancy text styling, or fake chat screenshots for the same joke. Connecting those paths builds a stronger viral-content loop across the website."
+      }),
+      faqs: makeFaqs([
+        ["Does this tool use AI or an API?", "No. The roast variations are built from local templates and randomized phrasing in the browser."],
+        ["Can I use the generated roast in a post or meme?", "Yes. You can copy the outputs individually or download them as a text file."],
+        ["Is the roast generator serious?", "No. It is for entertainment purposes only and should be used as a light joke tool."],
+        ["Do I need to create an account?", "No. The page works without login or signup."]
+      ]),
+      featureSignals: ["Entertainment only", "Multiple roast variations", "Copy and share buttons", "Randomized local templates", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
+    slug: "blur-profile-background",
+    toolKey: "blur-profile-background",
+    name: "Blur Background for Profile Pics",
+    shortName: "Blur Profile",
+    category: "Free Image Tool",
+    description: "Blur the background behind a profile photo with a center-focus portrait mask and export a clean PNG.",
+    featureSignals: ["Portrait blur effect", "Center focus mask", "Instant preview", "PNG download", ...sharedSignals],
+    sideHighlights: [
+      "Upload a portrait and blur the background instantly",
+      "Keep the face area sharp with a simple focus mask",
+      "Adjust blur strength live",
+      "Download a cleaned-up profile image without using a backend"
+    ],
+    related: ["ai-profile-photo-generator", "background-remover", "face-analyzer"],
+    componentProps: {},
+    page: makePage({
+      slug: "blur-profile-background",
+      toolSlug: "blur-profile-background",
+      metaTitle: "Blur Background for Profile Pics Online Free",
+      metaDescription:
+        "Blur the background of a profile picture online for free with instant preview and PNG export. Browser only, no upload, no login.",
+      h1: "Blur Background for Profile Pics Online With Local Browser Export",
+      intro:
+        "Upload a portrait, soften the background, keep the center subject in focus, and download a cleaner profile picture for LinkedIn, resumes, creator bios, team pages, and social accounts. The effect runs entirely in the browser and updates instantly as you adjust the blur amount.",
+      seoHeading: "Free profile background blur tool for cleaner headshots and social avatars",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "Blur background for profile picture online",
+        benefit:
+          "People searching for this task usually want a quick visual cleanup without learning photo-editing software. A simple portrait-focused tool helps them create a more professional-looking headshot for resumes, business profiles, or creator branding in just a few seconds.",
+        useCases:
+          "LinkedIn headshots, team profile images, resumes, portfolio pages, creator bios, messaging app avatars, and personal websites",
+        features:
+          "Pages in this category work best when the preview updates live, the controls stay simple, and the export remains sharp enough for profile use. The tool does not need studio-grade segmentation to be helpful. It just needs a clean subject-focused result and a frictionless download.",
+        linking:
+          "After blurring a background, users often want to test profile filters, extract colors for a brand kit, or create a new profile photo variation. Related links to those next steps help keep the site useful for a full avatar-editing session."
+      }),
+      faqs: makeFaqs([
+        ["Can I blur a profile photo background without Photoshop?", "Yes. Upload the image, adjust the blur level, and export the result directly in the browser."],
+        ["Does the face stay sharper than the background?", "Yes. The tool keeps a centered portrait area clearer while blurring the surrounding background."],
+        ["What format can I download?", "The processed profile image downloads as a PNG."],
+        ["Does the image upload to a server?", "No. The photo stays in your browser during processing."]
+      ]),
+      featureSignals: ["Portrait blur effect", "Center focus mask", "Instant preview", "PNG download", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
+    slug: "color-palette-from-image",
+    toolKey: "color-palette-from-image",
+    name: "Color Palette from Image",
+    shortName: "Palette Extractor",
+    category: "Free Design Tool",
+    description: "Extract dominant colors from an image, copy HEX values, and export a palette card or text list.",
+    featureSignals: ["Dominant color extraction", "HEX copy buttons", "Palette card export", "Browser-only processing", ...sharedSignals],
+    sideHighlights: [
+      "Upload an image and extract dominant colors instantly",
+      "Copy HEX codes one by one",
+      "Download the palette as an image or text file",
+      "Use the colors for branding, UI mocks, or social graphics"
+    ],
+    related: ["screenshot-beautifier", "ai-profile-photo-generator", "image-compressor"],
+    componentProps: {},
+    page: makePage({
+      slug: "color-palette-from-image",
+      toolSlug: "color-palette-from-image",
+      metaTitle: "Color Palette from Image Online Free HEX Extractor",
+      metaDescription:
+        "Extract a color palette from an image online for free. Get dominant colors, copy HEX codes, and export the palette card instantly in your browser.",
+      h1: "Color Palette from Image Online With HEX Extraction and Export",
+      intro:
+        "Upload a photo, screenshot, product shot, poster, or piece of artwork and instantly extract a clean set of dominant colors. Copy HEX values for design work or download a palette card you can share with teammates, clients, or creative collaborators.",
+      seoHeading: "Free color palette extractor for branding, UI ideas, and creative image analysis",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "Color palette from image online",
+        benefit:
+          "Searchers looking for palette extraction want fast visual answers they can use immediately in design files, websites, and presentations. A simple browser workflow is attractive because it avoids design-software overhead and makes it easy to grab colors from inspiration images on any device.",
+        useCases:
+          "brand moodboards, UI mockups, social templates, product packaging, poster design, presentation themes, and visual inspiration boards",
+        features:
+          "A useful palette page should show swatches clearly, expose HEX codes for copy-paste, and support quick exports for sharing. Those fundamentals matter more than excessive controls because most users arrive with one goal: pull a usable palette from an image fast.",
+        linking:
+          "Palette extraction often leads into screenshot styling, profile-photo editing, or image compression before publishing. Surfacing those adjacent tools helps the site support both design exploration and final asset prep in the same session."
+      }),
+      faqs: makeFaqs([
+        ["How does the tool choose the main colors?", "It samples pixels from the uploaded image and groups similar tones into a dominant palette."],
+        ["Can I copy the HEX codes?", "Yes. Each color swatch includes a copy action for the HEX value."],
+        ["Can I export the palette?", "Yes. You can download both a palette card image and a text file with the color codes."],
+        ["Is the extraction done locally?", "Yes. The image is processed in the browser without sending it to a server."]
+      ]),
+      featureSignals: ["Dominant color extraction", "HEX copy buttons", "Palette card export", "Browser-only processing", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
+    slug: "fake-chat-generator",
+    toolKey: "fake-chat-generator",
+    name: "Fake Chat Generator",
+    shortName: "Fake Chat",
+    category: "Free Viral Tool",
+    description: "Build a WhatsApp-style fake chat screenshot with custom names, timestamps, messages, and PNG export.",
+    featureSignals: ["Chat screenshot layout", "Custom names and times", "Add unlimited messages", "PNG export", ...sharedSignals],
+    sideHighlights: [
+      "Create a chat screenshot with custom names and times",
+      "Add, edit, and reorder messages quickly",
+      "Preview the conversation in a familiar messenger style",
+      "Download the finished fake chat as a PNG"
+    ],
+    related: ["meme-generator", "roast-my-bio", "screenshot-beautifier"],
+    componentProps: {},
+    page: makePage({
+      slug: "fake-chat-generator",
+      toolSlug: "fake-chat-generator",
+      metaTitle: "Fake Chat Generator Online Free Chat Screenshot Maker",
+      metaDescription:
+        "Create a fake chat screenshot online for free with custom names, timestamps, messages, and instant PNG export. Browser only and mobile friendly.",
+      h1: "Fake Chat Generator Online for Shareable Chat Screenshots",
+      intro:
+        "Build a chat-style screenshot for jokes, skits, storytelling posts, campaign mockups, or product demos. Customize the contact name, edit timestamps, add messages from both sides, preview the conversation instantly, and export a polished PNG directly from the browser.",
+      seoHeading: "Free fake chat generator for jokes, storytelling, skits, and social screenshots",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "Fake chat generator online",
+        benefit:
+          "Visitors using this type of tool usually care about speed, visual familiarity, and easy sharing. They want to create a believable chat-style layout in a few taps for entertainment, promo ideas, or mock product messaging without building the scene manually in a design app.",
+        useCases:
+          "social jokes, meme content, campaign mockups, launch storytelling, classroom skits, creator videos, and conversation-style screenshots",
+        features:
+          "The most useful pages support fast message entry, easy customization of names and timestamps, and clean export that looks good on mobile. Immediate preview matters because chat tools are often used in quick creative bursts rather than long editing sessions.",
+        linking:
+          "A fake chat often becomes meme content, roast content, or a styled screenshot for posting. Internal links to those related tools help users keep iterating on the same idea without leaving the site."
+      }),
+      faqs: makeFaqs([
+        ["Can I change the contact name and timestamps?", "Yes. You can customize the header name and edit message times directly in the tool."],
+        ["Can I add both incoming and outgoing messages?", "Yes. The conversation supports messages from both sides for a full chat layout."],
+        ["What does the tool export?", "It exports a PNG screenshot of the generated chat."],
+        ["Is this for real messaging?", "No. It is a visual generator for mockups, storytelling, and entertainment only."]
+      ]),
+      featureSignals: ["Chat screenshot layout", "Custom names and times", "Add unlimited messages", "PNG export", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
+    slug: "image-comparison",
+    toolKey: "image-comparison",
+    name: "Before After Image Comparison Tool",
+    shortName: "Before After",
+    category: "Free Image Tool",
+    description: "Compare two images with an interactive reveal slider and export the current before/after frame as PNG.",
+    featureSignals: ["Interactive reveal slider", "Two-image upload", "PNG export", "Instant comparison preview", ...sharedSignals],
+    sideHighlights: [
+      "Upload before and after images for side-by-side reveal",
+      "Adjust the comparison point with a draggable slider",
+      "Preview changes instantly on mobile and desktop",
+      "Download the current comparison frame as a PNG"
+    ],
+    related: ["blur-profile-background", "ai-profile-photo-generator", "screenshot-beautifier"],
+    componentProps: {},
+    page: makePage({
+      slug: "image-comparison",
+      toolSlug: "image-comparison",
+      metaTitle: "Before After Image Comparison Tool Online Free",
+      metaDescription:
+        "Compare two images online for free with a before and after slider, instant preview, and PNG export. Works fully in the browser.",
+      h1: "Before and After Image Comparison Tool Online With Slider Export",
+      intro:
+        "Upload two images, drag the reveal slider, and compare changes visually in one clean view. The tool is useful for photo edits, profile-picture cleanup, product retouching, landing page comparisons, and showing results in a way that is easier to understand than static thumbnails.",
+      seoHeading: "Free before and after image comparison slider for edits, design changes, and visual proof",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "Before after image comparison tool online",
+        benefit:
+          "This type of search comes from users who need to show a transformation clearly, whether for client review, social proof, product demonstrations, or editing comparisons. A slider-based preview is faster to understand than separate screenshots and tends to keep viewers engaged longer.",
+        useCases:
+          "photo edits, design revisions, landing page comparisons, profile-picture improvements, product photo cleanup, restoration showcases, and portfolio case studies",
+        features:
+          "The strongest pages keep image upload simple, make the reveal point easy to control, and provide a way to export the comparison frame for sharing in presentations or posts. Those core actions support both casual and professional use cases.",
+        linking:
+          "After comparing images, visitors often want to blur a portrait background, apply profile-photo filters, or beautify a screenshot for posting. Those adjacent links keep the visual workflow moving deeper into the site."
+      }),
+      faqs: makeFaqs([
+        ["How do I compare two images with a slider?", "Upload a before image and an after image, then drag the slider to reveal more or less of the edited version."],
+        ["Can I download the comparison view?", "Yes. The tool can export the current slider frame as a PNG image."],
+        ["Will it work on a phone?", "Yes. The comparison layout is responsive and works on mobile browsers."],
+        ["Are the images uploaded anywhere?", "No. The comparison is rendered locally in your browser."]
+      ]),
+      featureSignals: ["Interactive reveal slider", "Two-image upload", "PNG export", "Instant comparison preview", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
+    slug: "face-analyzer",
+    toolKey: "face-analyzer",
+    name: "Face Analyzer",
+    shortName: "Face Fun",
+    category: "Free Fun Tool",
+    description: "Analyze a face photo locally and show a smile score, confidence score, and fun rating for entertainment purposes only.",
+    featureSignals: ["Entertainment only", "Local face box detection", "Smile and confidence scores", "Annotated PNG export", ...sharedSignals],
+    sideHighlights: [
+      "Upload a portrait and detect the main face area locally",
+      "See smile score, confidence score, and a fun rating",
+      "View a face box overlay on the preview",
+      "Download the annotated result image from the browser"
+    ],
+    related: ["ai-profile-photo-generator", "blur-profile-background", "meme-generator"],
+    componentProps: {},
+    page: makePage({
+      slug: "face-analyzer",
+      toolSlug: "face-analyzer",
+      metaTitle: "Face Analyzer Online Fun Smile Confidence Rating Tool",
+      metaDescription:
+        "Upload a portrait and get a smile score, confidence score, and fun face rating online. For entertainment purposes only and runs locally in the browser.",
+      h1: "Face Analyzer Online With Smile Score, Confidence Score, and Fun Rating",
+      intro:
+        "Upload a portrait and get a playful face analysis with a detected face box, smile score, confidence score, and overall fun rating. This page is designed for entertainment only and does not claim scientific or beauty accuracy. Everything runs locally in your browser with no backend processing.",
+      seoHeading: "Fun face analyzer for portraits, smile scoring, and shareable entertainment screenshots",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "Face analyzer online",
+        benefit:
+          "Users arriving on this kind of page are usually looking for a quick, playful experience they can share with friends. The best version keeps the output immediate, labels it clearly as entertainment, and avoids pretending to deliver real-world judgment or biometric accuracy.",
+        useCases:
+          "friend challenges, portrait experiments, creator content, social stories, profile-photo testing, meme posts, and casual group-chat entertainment",
+        features:
+          "A useful entertainment page should display the face box, present a few playful scores, and keep the disclaimer obvious so expectations stay clear. Lightweight local processing is a better fit than heavy infrastructure for this sort of quick shareable interaction.",
+        linking:
+          "After trying a face analyzer, visitors often continue to profile-photo filters, portrait background blur, or meme creation. Those related routes help the site turn a one-off curiosity click into a longer creative session."
+      }),
+      faqs: makeFaqs([
+        ["Is this face analyzer accurate?", "No. It is for entertainment purposes only and should not be treated as a real assessment tool."],
+        ["Does the tool detect a face locally?", "Yes. It attempts local face-region detection in the browser and falls back gracefully when support is limited."],
+        ["What scores does it show?", "The page shows a smile score, confidence score, and an overall fun rating."],
+        ["Does it upload my photo?", "No. The analysis runs locally in your browser."]
+      ]),
+      featureSignals: ["Entertainment only", "Local face box detection", "Smile and confidence scores", "Annotated PNG export", ...sharedSignals]
+    }),
+    seoPages: []
+  },
+  {
+    slug: "ai-profile-photo-generator",
+    toolKey: "ai-profile-photo-generator",
+    name: "AI Profile Photo Generator",
+    shortName: "Profile Filters",
+    category: "Free Profile Tool",
+    description: "Apply lite profile-photo filters like cartoon, sketch, and professional tone locally in the browser with instant preview.",
+    featureSignals: ["Cartoon filter", "Sketch filter", "Professional tone", "PNG export", ...sharedSignals],
+    sideHighlights: [
+      "Upload a profile photo and try multiple lite style filters",
+      "Switch between cartoon, sketch, and professional tone instantly",
+      "Preview the processed portrait before exporting",
+      "Download the updated profile image with no backend"
+    ],
+    related: ["blur-profile-background", "face-analyzer", "image-to-sketch"],
+    componentProps: {},
+    page: makePage({
+      slug: "ai-profile-photo-generator",
+      toolSlug: "ai-profile-photo-generator",
+      metaTitle: "AI Profile Photo Generator Lite Online Free",
+      metaDescription:
+        "Generate profile photo variations online for free with cartoon, sketch, and professional tone filters. Browser only, instant preview, and PNG export.",
+      h1: "AI Profile Photo Generator Lite With Cartoon, Sketch, and Professional Tone Filters",
+      intro:
+        "Upload a headshot or selfie, apply lightweight profile-photo filters instantly, and export a refreshed portrait for bios, resumes, creator pages, or social accounts. The page runs entirely in the browser and focuses on practical visual styles rather than external AI generation services.",
+      seoHeading: "Free lite profile photo generator for stylized avatars and polished headshot variations",
+      seoParagraphs: buildSeoParagraphs({
+        keyword: "AI profile photo generator online",
+        benefit:
+          "Many users want a faster way to test profile-photo styles without paying for a studio app or remote AI service. A lightweight browser tool can satisfy that intent by making portraits look more polished, stylized, or social-ready in seconds.",
+        useCases:
+          "LinkedIn profile images, creator avatars, team headshots, resume visuals, Discord photos, social bios, and portfolio pages",
+        features:
+          "The strongest pages in this segment keep the controls simple, show a clear preview, and let users switch styles quickly before exporting. Practical filter names and instant results are more important than exaggerated complexity for this type of repeat-use profile tool.",
+        linking:
+          "Users refining a profile image often also want to blur the background, compare two portrait versions, or turn the result into a sketch. Related links support that broader identity-editing workflow and increase session depth."
+      }),
+      faqs: makeFaqs([
+        ["Does this tool use a remote AI API?", "No. The lite profile styles are generated locally in the browser with image effects and filters."],
+        ["Which profile styles are included?", "The tool includes cartoon, sketch, and professional tone variations."],
+        ["Can I download the result?", "Yes. The processed profile photo can be exported as a PNG."],
+        ["Is my portrait uploaded anywhere?", "No. The image stays on your device during processing."]
+      ]),
+      featureSignals: ["Cartoon filter", "Sketch filter", "Professional tone", "PNG export", ...sharedSignals]
+    }),
+    seoPages: []
   }
 ];
 
@@ -1285,7 +1985,7 @@ export const siteMeta = {
   name: "UtilityHub",
   tagline: "Unlimited free online tools with no login and no daily limits.",
   description:
-    "Use free QR code, image editing, PDF, background remover, password, JSON, unit converter, and YouTube thumbnail tools with no sign up and unlimited access."
+    "Use free screenshot, meme, QR, PDF unlock, PDF to image, profile photo, palette, fake chat, comparison, image editing, password, JSON, unit converter, and YouTube thumbnail tools with no sign up and unlimited access."
 };
 
 export const toolList = toolDefinitions.map(({ slug, name, shortName, category, description }) => ({
@@ -1297,13 +1997,16 @@ export const toolList = toolDefinitions.map(({ slug, name, shortName, category, 
 }));
 
 export const popularToolSlugs = [
+  "screenshot-beautifier",
+  "meme-generator",
+  "qr-designer",
+  "fancy-text-generator",
+  "pdf-to-image",
+  "fake-chat-generator",
+  "ai-profile-photo-generator",
+  "image-to-sketch",
   "qr-code-generator",
-  "image-compressor",
-  "crop-rotate-flip-image",
-  "pdf-merge",
-  "background-remover",
-  "password-generator",
-  "youtube-thumbnail-downloader"
+  "image-compressor"
 ];
 
 export const toolsBySlug = Object.fromEntries(toolDefinitions.map((tool) => [tool.slug, tool]));
@@ -1313,28 +2016,28 @@ export const pagesBySlug = Object.fromEntries(
 );
 
 export const homeContent = {
-  metaTitle: "Free Online QR PDF Image Editing Password JSON and Converter Tools",
+  metaTitle: "Free Online Screenshot Meme QR PDF Image Profile and Utility Tools",
   metaDescription:
-    "Use free online QR code, image compressor, crop, watermark, blur, PDF tools, background remover, password generator, JSON formatter, and unit converter tools with no login and instant results.",
-  h1: "Unlimited Free Online Tools for QR Codes, PDFs, Image Editing, Passwords, JSON, and Unit Conversion",
+    "Use free online screenshot beautifier, meme generator, fancy text, QR designer, PDF unlock, PDF to image, profile filters, fake chat, palette, image comparison, and utility tools with no login and instant results.",
+  h1: "Unlimited Free Online Tools for Screenshots, Memes, QR Codes, Images, PDFs, Profiles, Text, and More",
   intro:
-    "Use fast online tools with no login, no sign up, and no daily cap. Generate QR codes, merge and split PDFs, compress images and documents, crop photos, add watermarks, blur backgrounds, remove image backgrounds, create strong passwords, format JSON, convert units, and download YouTube thumbnails from one clean tools website.",
+    "Use fast online tools with no login, no sign up, and no daily cap. Beautify screenshots, generate fancy text, create memes, design advanced QR codes, unlock protected PDFs with the correct password, convert PDFs into images, turn images into sketch-style artwork, generate fake chats, extract color palettes, compare before and after images, build resume screenshots, blur profile backgrounds, apply lite profile-photo filters, roast bios for fun, compress images and documents, crop photos, add watermarks, remove image backgrounds, create strong passwords, format JSON, convert units, and download YouTube thumbnails from one clean tools website.",
   seoHeading: "Free online tools with no login, unlimited use, fast downloads, and SEO friendly utility pages",
   seoParagraphs: buildSeoParagraphs({
     keyword: "Free online tools",
     benefit:
       "A broad tools website performs best when each page solves one clear task quickly while still fitting into a larger internal-link system that helps users discover related utilities.",
     useCases:
-      "creating QR codes, reducing image size, cropping and watermarking photos, blurring image backgrounds, merging and splitting PDFs, removing image backgrounds, generating passwords, formatting JSON, downloading thumbnails, and converting units",
+      "beautifying screenshots, creating memes, styling text, designing QR codes, unlocking protected PDFs, converting PDFs to images, generating fake chats, extracting color palettes, comparing before-and-after images, blurring profile backgrounds, applying profile filters, reducing image size, cropping and watermarking photos, merging and splitting PDFs, removing image backgrounds, generating passwords, formatting JSON, downloading thumbnails, and converting units",
     features:
       "Pages that emphasize no login, unlimited free use, fast results, clear downloads, and mobile-friendly controls align closely with what users search for in the utility space.",
     linking:
-      "When one tool naturally leads to another, such as background removal followed by compression or PDF merging followed by size reduction, the website becomes more useful and more likely to hold traffic across many search intents."
+      "When one tool naturally leads to another, such as screenshot styling followed by meme creation or background removal followed by compression, the website becomes more useful and more likely to hold traffic across many search intents."
   }),
   faqs: makeFaqs([
     ["Are these online tools free to use forever?", "Yes. The tools are designed for unlimited free use with no login, no forced registration, and no visible daily cap."],
-    ["Which tools are included on the website?", "The site includes QR code, image compression and editing, PDF, background remover, password, JSON, unit conversion, and YouTube thumbnail tools."],
+    ["Which tools are included on the website?", "The site includes screenshot beautifier, fancy text, meme, QR, PDF unlock, PDF to image, fake chat, profile tools, palette extraction, image comparison, image compression and editing, background remover, password, JSON, unit conversion, and YouTube thumbnail tools."],
     ["Do I need to create an account to use the tools?", "No. You can open the page, use the tool immediately, and download or copy the result without signing in."],
-    ["What are the biggest benefits of these tools?", "The main benefits are no login, unlimited access, fast results, easy mobile use, and clear feature options for common everyday tasks."]
+    ["What are the biggest benefits of these tools?", "The main benefits are no login, unlimited access, fast results, easy mobile use, and clear feature options for common everyday tasks and shareable visual content."]
   ])
 };

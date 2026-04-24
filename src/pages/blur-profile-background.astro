@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import BlurProfileBackgroundTool from "../components/tools/BlurProfileBackgroundTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["blur-profile-background"];
+const page = pagesBySlug["blur-profile-background"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <BlurProfileBackgroundTool client:load />
+</ToolPage>

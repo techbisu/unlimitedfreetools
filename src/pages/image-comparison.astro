@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import ImageComparisonTool from "../components/tools/ImageComparisonTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["image-comparison"];
+const page = pagesBySlug["image-comparison"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <ImageComparisonTool client:load />
+</ToolPage>

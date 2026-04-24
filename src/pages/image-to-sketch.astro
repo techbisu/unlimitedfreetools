@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import ImageToSketchTool from "../components/tools/ImageToSketchTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["image-to-sketch"];
+const page = pagesBySlug["image-to-sketch"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <ImageToSketchTool client:load />
+</ToolPage>

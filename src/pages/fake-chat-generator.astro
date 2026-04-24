@@ -1,0 +1,12 @@
+---
+import ToolPage from "../components/ToolPage.astro";
+import FakeChatGeneratorTool from "../components/tools/FakeChatGeneratorTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
+
+const tool = toolsBySlug["fake-chat-generator"];
+const page = pagesBySlug["fake-chat-generator"];
+---
+
+<ToolPage tool={tool} page={page}>
+  <FakeChatGeneratorTool client:load />
+</ToolPage>

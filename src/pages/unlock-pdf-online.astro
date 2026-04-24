@@ -1,40 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import AdBlock from "./AdBlock.astro";
-import FAQSection from "./FAQSection.astro";
-import SEOSection from "./SEOSection.astro";
-import RelatedTools from "./RelatedTools.astro";
-import PopularTools from "./PopularTools.astro";
-import LatestBlogPosts from "./LatestBlogPosts.astro";
+import AdBlock from "../components/AdBlock.astro";
+import FAQSection from "../components/FAQSection.astro";
+import SEOSection from "../components/SEOSection.astro";
+import RelatedTools from "../components/RelatedTools.astro";
+import PopularTools from "../components/PopularTools.astro";
+import LatestBlogPosts from "../components/LatestBlogPosts.astro";
+import UnlockPDFTool from "../components/tools/UnlockPDFTool.jsx";
+import { pagesBySlug, toolsBySlug } from "../data/tool-content.js";
 
-interface ToolPageData {
-  slug: string;
-  toolSlug: string;
-  metaTitle: string;
-  metaDescription: string;
-  h1: string;
-  intro: string;
-  seoHeading: string;
-  seoParagraphs: string[];
-  faqs: Array<{ question: string; answer: string }>;
-  featureSignals?: string[];
-}
-
-interface ToolDefinition {
-  slug: string;
-  name: string;
-  category: string;
-  description: string;
-  sideHighlights: string[];
-  componentProps?: Record<string, unknown>;
-}
-
-interface Props {
-  tool: ToolDefinition;
-  page: ToolPageData;
-}
-
-const { tool, page } = Astro.props;
+const tool = toolsBySlug["unlock-pdf-online"];
+const page = pagesBySlug["unlock-pdf-online"];
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -66,7 +42,7 @@ const structuredData = {
         <div class="surface-panel-strong p-6 sm:p-8">
           <span class="eyebrow">{tool.category}</span>
           <h1 class="mt-4 text-4xl font-semibold tracking-tight text-strong sm:text-5xl">{page.h1}</h1>
-          <p class="mt-4 max-w-3xl text-base leading-8 text-muted">{page.intro}</p>
+          <p class="mt-4 max-w-3xl text-lg leading-8 text-muted">{page.intro}</p>
           <div class="mt-6 flex flex-wrap gap-2">
             {(page.featureSignals ?? []).map((signal) => (
               <span class="chip-tag">{signal}</span>
@@ -84,17 +60,17 @@ const structuredData = {
         </div>
       </div>
 
-      <AdBlock variant="top" />
+      <AdBlock position="top" />
 
       <div class="pt-2 sm:pt-3">
-        <slot />
+        <UnlockPDFTool client:load />
       </div>
     </div>
   </section>
 
   <section class="section-band pt-0">
     <div class="container-shell">
-      <AdBlock variant="mid" />
+      <AdBlock position="middle" />
     </div>
   </section>
 
@@ -103,10 +79,10 @@ const structuredData = {
   <RelatedTools currentSlug={tool.slug} />
   <PopularTools currentSlug={tool.slug} />
   <LatestBlogPosts />
+
   <section class="section-band pt-0">
     <div class="container-shell">
-      <AdBlock position="bottom" />
+      <AdBlock variant="mid" />
     </div>
   </section>
-  <AdBlock variant="sticky" />
 </BaseLayout>
